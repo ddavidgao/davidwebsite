@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #370e48;
+  --foreground: #ffffff;
+  --coc-purple: #370e48;
+  --coc-blue: #6c8192;
+  --coc-dark: #1e3f56;
+  --coc-green: #6f9c45;
 }
 
 @theme inline {
@@ -14,8 +18,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #370e48;
+    --foreground: #ffffff;
   }
 }
 
@@ -23,4 +27,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar for Clash of Clans theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--coc-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--coc-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--coc-blue);
 }

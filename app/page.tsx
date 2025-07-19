@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const [buttonPressed, setButtonPressed] = useState(false);
+  const [isImageHovered, setIsImageHovered] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -18,9 +18,35 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* ASCII Art Background */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-[#6c8192] font-mono text-xs"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `asciiFloat ${10 + Math.random() * 10}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          >
+            {['🏰', '⚔️', '🛡️', '⚡', '💎', '🏆', '🎯', '🔥'][Math.floor(Math.random() * 8)]}
+          </div>
+        ))}
+      </div>
+
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="w-full h-full" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #6c8192 1px, transparent 0)`,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
+
       {/* Header */}
-      <header className="text-center py-8">
+      <header className="text-center py-8 relative z-10">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
           David Gao
         </h1>
@@ -30,7 +56,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
+      <main className="max-w-6xl mx-auto px-4 py-8 relative z-10">
         {/* Clash of Clans Section - Dynamic and Sophisticated */}
         <section className="mb-16 relative">
           <div 
@@ -87,7 +113,7 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Brownian Motion Particles */}
+            {/* Brownian Motion Particles - Only active on hover */}
             <div className="absolute inset-0 overflow-hidden">
               {[...Array(15)].map((_, i) => (
                 <div
@@ -96,14 +122,15 @@ export default function Home() {
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    animation: `brownianMotion ${8 + Math.random() * 4}s ease-in-out infinite`,
-                    animationDelay: `${Math.random() * 3}s`
+                    animation: isHovering ? `brownianMotion ${8 + Math.random() * 4}s ease-in-out infinite` : 'none',
+                    animationDelay: isHovering ? `${Math.random() * 3}s` : '0s',
+                    opacity: isHovering ? 0.7 : 0.1
                   }}
                 />
               ))}
             </div>
 
-            {/* Additional Purple Particles */}
+            {/* Additional Purple Particles - Only active on hover */}
             <div className="absolute inset-0 overflow-hidden">
               {[...Array(10)].map((_, i) => (
                 <div
@@ -112,8 +139,9 @@ export default function Home() {
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    animation: `brownianMotion ${6 + Math.random() * 3}s ease-in-out infinite`,
-                    animationDelay: `${Math.random() * 2}s`
+                    animation: isHovering ? `brownianMotion ${6 + Math.random() * 3}s ease-in-out infinite` : 'none',
+                    animationDelay: isHovering ? `${Math.random() * 2}s` : '0s',
+                    opacity: isHovering ? 0.6 : 0.05
                   }}
                 />
               ))}
@@ -142,14 +170,23 @@ export default function Home() {
               {/* Base Image with Dynamic Effects */}
               <div className="relative max-w-4xl mx-auto">
                 <div 
-                  className="absolute inset-0 rounded-xl"
+                  className="absolute inset-0 rounded-xl transition-all duration-500"
                   style={{
                     background: `conic-gradient(from ${mousePosition.x}deg, #6c8192, #370e48, #1e3f56, #6c8192)`,
                     opacity: isHovering ? 0.4 : 0.15,
-                    transition: 'opacity 0.5s ease'
+                    transform: isImageHovered ? 'scale(1.05)' : 'scale(1)',
+                    transition: 'opacity 0.5s ease, transform 0.5s ease'
                   }}
                 />
-                <div className="relative bg-gradient-to-br from-[#1e3f56] to-[#370e48] p-4 rounded-xl border border-[#6c8192]/50">
+                <div 
+                  className="relative bg-gradient-to-br from-[#1e3f56] to-[#370e48] p-4 rounded-xl border border-[#6c8192]/50 transition-all duration-500"
+                  style={{
+                    transform: isImageHovered ? 'scale(1.02)' : 'scale(1)',
+                    padding: isImageHovered ? '1.5rem' : '1rem'
+                  }}
+                  onMouseEnter={() => setIsImageHovered(true)}
+                  onMouseLeave={() => setIsImageHovered(false)}
+                >
                   <Image
                     src="/coc_base.PNG"
                     alt="David's Clash of Clans Town Hall 15 Base"
@@ -159,25 +196,6 @@ export default function Home() {
                     priority
                   />
                 </div>
-              </div>
-
-              {/* Physical Button */}
-              <div className="text-center mt-8">
-                <button 
-                  className={`relative overflow-hidden bg-gradient-to-r from-[#370e48] to-[#1e3f56] text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg border-2 border-[#6c8192]/50 ${
-                    buttonPressed ? 'transform translate-y-2 shadow-inner' : 'transform translate-y-0 hover:translate-y-[-2px] hover:shadow-xl'
-                  }`}
-                  onMouseDown={() => setButtonPressed(true)}
-                  onMouseUp={() => setButtonPressed(false)}
-                  onMouseLeave={() => setButtonPressed(false)}
-                  style={{
-                    animation: isHovering ? 'buttonPulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite' : 'none'
-                  }}
-                >
-                  <span className="relative z-10">Join My Clan</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#6c8192]/20 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#6c8192]/10 to-transparent rounded-lg" />
-                </button>
               </div>
             </div>
           </div>
@@ -232,7 +250,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="text-center py-8 mt-16">
+      <footer className="text-center py-8 mt-16 relative z-10">
         <p className="text-gray-400">
           © 2024 David Gao. Built with Next.js and Clash of Clans passion.
         </p>
@@ -289,20 +307,15 @@ export default function Home() {
           }
         }
         
-        @keyframes buttonPulse {
+        @keyframes asciiFloat {
           0%, 100% { 
-            transform: scale(1) translateY(0); 
-            box-shadow: 0 10px 25px rgba(108, 129, 146, 0.3);
+            transform: translateY(0px) rotate(0deg); 
+            opacity: 0.05;
           }
           50% { 
-            transform: scale(1.02) translateY(-1px); 
-            box-shadow: 0 15px 35px rgba(108, 129, 146, 0.5);
+            transform: translateY(-20px) rotate(180deg); 
+            opacity: 0.1;
           }
-        }
-        
-        @keyframes shimmer {
-          0% { transform: translateX(-100%) skewX(-12deg); }
-          100% { transform: translateX(200%) skewX(-12deg); }
         }
       `}</style>
     </div>

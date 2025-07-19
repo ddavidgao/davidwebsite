@@ -212,23 +212,22 @@ export default function Home() {
                   }}
                 />
                 <div 
-                  className="relative bg-gradient-to-br from-[#370e48] to-[#1e3f56] rounded-xl border border-[#370e48]/50 transition-all duration-500"
+                  className="relative bg-gradient-to-br from-[#370e48] to-[#1e3f56] rounded-xl border border-[#370e48]/50"
                   style={{
-                    transform: isImageHovered ? 'scale(1.08)' : 'scale(1)',
-                    padding: isImageHovered ? '2.5rem' : '1rem'
+                    padding: '1rem'
                   }}
-                  onMouseEnter={() => setIsImageHovered(true)}
-                  onMouseLeave={() => setIsImageHovered(false)}
                 >
                   <Image
                     src="/coc_base.PNG"
                     alt="David's Clash of Clans Town Hall 15 Base"
                     width={800}
                     height={600}
-                    className="w-full h-auto rounded-lg shadow-2xl transition-all duration-500"
+                    className="w-full h-auto rounded-lg shadow-2xl transition-transform duration-300 ease-out"
                     style={{
                       transform: isImageHovered ? 'scale(1.05)' : 'scale(1)'
                     }}
+                    onMouseEnter={() => setIsImageHovered(true)}
+                    onMouseLeave={() => setIsImageHovered(false)}
                     priority
                   />
                 </div>

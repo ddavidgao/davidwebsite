@@ -7,17 +7,19 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
-  const [gradientPosition, setGradientPosition] = useState({ x: 0, y: 0 });
+  const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
+  const [rippleTime, setRippleTime] = useState(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       
       if (isHovering) {
-        // Reactive gradient movement based on mouse position
+        // Create ripple effect from mouse position
         const x = (e.clientX / window.innerWidth) * 100;
         const y = (e.clientY / window.innerHeight) * 100;
         setGradientPosition({ x, y });
+        setRippleTime(Date.now());
       }
     };
 
@@ -25,15 +27,15 @@ export default function Home() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isHovering]);
 
-  // Smooth random gradient movement when not hovering
+  // Gentle ripple animation when not hovering
   useEffect(() => {
     if (!isHovering) {
       const interval = setInterval(() => {
-        setGradientPosition({
-          x: Math.random() * 100,
-          y: Math.random() * 100
-        });
-      }, 4000 + Math.random() * 6000); // Longer, more fluid intervals
+        const time = Date.now() * 0.001; // Convert to seconds
+        const x = 50 + Math.sin(time * 0.5) * 20 + Math.cos(time * 0.3) * 15;
+        const y = 50 + Math.cos(time * 0.4) * 25 + Math.sin(time * 0.6) * 10;
+        setGradientPosition({ x, y });
+      }, 50); // Update every 50ms for smooth animation
 
       return () => clearInterval(interval);
     }
@@ -86,17 +88,20 @@ export default function Home() {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
             style={{
-              background: `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
-                #370e48 0%, 
-                #370e48 15%, 
-                #1e3f56 25%, 
-                #6c8192 35%, 
-                #370e48 50%, 
-                #370e48 65%, 
-                #1e3f56 75%, 
-                #370e48 85%, 
-                #370e48 100%)`,
-              transition: isHovering ? 'none' : 'all 4s cubic-bezier(0.4, 0, 0.2, 1)'
+              background: isHovering 
+                ? `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
+                    #370e48 0%, 
+                    #370e48 20%, 
+                    #1e3f56 40%, 
+                    #6c8192 60%, 
+                    #370e48 80%, 
+                    #370e48 100%)`
+                : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
+                    #370e48 0%, 
+                    #370e48 30%, 
+                    #1e3f56 60%, 
+                    #370e48 100%)`,
+              transition: isHovering ? 'none' : 'all 0.1s ease-out'
             }}
           >
             {/* Dynamic Geometric Patterns */}
@@ -111,8 +116,8 @@ export default function Home() {
                     left: `${i * 12}%`,
                     top: `${i * 8}%`,
                     animation: isHovering 
-                      ? `fluidGeometric ${3 + Math.random() * 2}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
-                      : `gentleFloat ${12 + Math.random() * 6}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
+                      ? `rippleGeometric ${2 + Math.random() * 1}s ease-out infinite`
+                      : `gentleFloat ${8 + Math.random() * 4}s ease-in-out infinite`,
                     animationDelay: `${i * 0.4}s`,
                     transform: `rotate(${i * 45}deg)`
                   }}
@@ -133,8 +138,8 @@ export default function Home() {
                     top: `${Math.random() * 100}%`,
                     background: `radial-gradient(circle, rgba(55, 14, 72, 0.8) 0%, rgba(108, 129, 146, 0.4) 70%, transparent 100%)`,
                     animation: isHovering 
-                      ? `fluidEnergy ${2 + Math.random() * 1.5}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
-                      : `gentleEnergy ${8 + Math.random() * 4}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
+                      ? `rippleEnergy ${1.5 + Math.random() * 1}s ease-out infinite`
+                      : `gentleEnergy ${6 + Math.random() * 3}s ease-in-out infinite`,
                     animationDelay: `${Math.random() * 2}s`,
                     filter: 'blur(1px)'
                   }}
@@ -152,8 +157,8 @@ export default function Home() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                     animation: isHovering 
-                      ? `fluidParticle ${4 + Math.random() * 2}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
-                      : `gentleParticle ${10 + Math.random() * 5}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
+                      ? `rippleParticle ${2 + Math.random() * 1}s ease-out infinite`
+                      : `gentleParticle ${8 + Math.random() * 4}s ease-in-out infinite`,
                     animationDelay: isHovering ? `${Math.random() * 1}s` : `${Math.random() * 2}s`,
                     opacity: isHovering ? 0.8 : 0.3
                   }}
@@ -171,8 +176,8 @@ export default function Home() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                     animation: isHovering 
-                      ? `fluidParticle ${3 + Math.random() * 1.5}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
-                      : `gentleParticle ${8 + Math.random() * 4}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
+                      ? `rippleParticle ${1.5 + Math.random() * 1}s ease-out infinite`
+                      : `gentleParticle ${6 + Math.random() * 3}s ease-in-out infinite`,
                     animationDelay: isHovering ? `${Math.random() * 0.5}s` : `${Math.random() * 1.5}s`,
                     opacity: isHovering ? 0.7 : 0.2
                   }}
@@ -292,21 +297,15 @@ export default function Home() {
       </footer>
 
       <style jsx>{`
-        @keyframes fluidGeometric {
-          0%, 100% { 
+        @keyframes rippleGeometric {
+          0% { 
             transform: translate(0px, 0px) rotate(0deg) scale(1); 
           }
-          20% { 
-            transform: translate(8px, -12px) rotate(45deg) scale(1.05); 
+          50% { 
+            transform: translate(10px, -8px) rotate(90deg) scale(1.1); 
           }
-          40% { 
-            transform: translate(-6px, 8px) rotate(90deg) scale(0.95); 
-          }
-          60% { 
-            transform: translate(12px, -4px) rotate(135deg) scale(1.08); 
-          }
-          80% { 
-            transform: translate(-8px, 16px) rotate(180deg) scale(0.92); 
+          100% { 
+            transform: translate(0px, 0px) rotate(180deg) scale(1); 
           }
         }
         
@@ -319,22 +318,18 @@ export default function Home() {
           }
         }
         
-        @keyframes fluidEnergy {
-          0%, 100% { 
+        @keyframes rippleEnergy {
+          0% { 
             transform: translate(0px, 0px) scale(1); 
             opacity: 0.6;
           }
-          25% { 
-            transform: translate(12px, -8px) scale(1.2); 
+          50% { 
+            transform: translate(15px, -10px) scale(1.3); 
             opacity: 0.9;
           }
-          50% { 
-            transform: translate(-8px, 12px) scale(0.8); 
-            opacity: 0.4;
-          }
-          75% { 
-            transform: translate(10px, -6px) scale(1.1); 
-            opacity: 0.7;
+          100% { 
+            transform: translate(0px, 0px) scale(1); 
+            opacity: 0.6;
           }
         }
         
@@ -353,26 +348,18 @@ export default function Home() {
           }
         }
         
-        @keyframes fluidParticle {
-          0%, 100% { 
+        @keyframes rippleParticle {
+          0% { 
             transform: translate(0px, 0px) rotate(0deg); 
             opacity: 0.8;
           }
-          20% { 
-            transform: translate(15px, -10px) rotate(45deg); 
+          50% { 
+            transform: translate(20px, -15px) rotate(90deg); 
             opacity: 1;
           }
-          40% { 
-            transform: translate(-8px, 18px) rotate(90deg); 
-            opacity: 0.6;
-          }
-          60% { 
-            transform: translate(20px, -5px) rotate(135deg); 
-            opacity: 0.9;
-          }
-          80% { 
-            transform: translate(-12px, 25px) rotate(180deg); 
-            opacity: 0.7;
+          100% { 
+            transform: translate(0px, 0px) rotate(180deg); 
+            opacity: 0.8;
           }
         }
         
@@ -409,3 +396,4 @@ export default function Home() {
     </div>
   );
 }
+

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [buttonPressed, setButtonPressed] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -33,7 +34,7 @@ export default function Home() {
         {/* Clash of Clans Section - Unique and Showy */}
         <section className="mb-16 relative">
           <div 
-            className="relative overflow-hidden rounded-2xl border-2 border-[#6f9c45] shadow-2xl"
+            className="relative overflow-hidden rounded-2xl border-2 border-[#6c8192] shadow-2xl"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
             style={{
@@ -41,39 +42,55 @@ export default function Home() {
                 #370e48 0%, 
                 #1e3f56 25%, 
                 #6c8192 50%, 
-                #6f9c45 75%, 
-                #370e48 100%)`,
+                #370e48 75%, 
+                #1e3f56 100%)`,
               backgroundSize: '400% 400%',
-              animation: isHovering ? 'gradientShift 2s ease infinite' : 'none'
+              animation: isHovering ? 'gradientShift 3s ease infinite' : 'none'
             }}
           >
-            {/* Animated Stripes */}
-            <div className="absolute inset-0 opacity-30">
-              {[...Array(20)].map((_, i) => (
+            {/* Animated Stripes with Fluid Motion */}
+            <div className="absolute inset-0 opacity-40">
+              {[...Array(25)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute h-1 bg-gradient-to-r from-transparent via-[#6f9c45] to-transparent"
+                  className="absolute h-1 bg-gradient-to-r from-transparent via-[#6c8192] to-transparent"
                   style={{
-                    top: `${i * 5}%`,
+                    top: `${i * 4}%`,
                     left: '-100%',
                     right: '-100%',
-                    animation: `stripeMove ${3 + i * 0.1}s linear infinite`,
-                    animationDelay: `${i * 0.1}s`
+                    animation: `stripeMove ${2.5 + i * 0.08}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
+                    animationDelay: `${i * 0.05}s`
                   }}
                 />
               ))}
             </div>
 
-            {/* Floating Particles */}
+            {/* Brownian Motion Particles */}
             <div className="absolute inset-0 overflow-hidden">
-              {[...Array(15)].map((_, i) => (
+              {[...Array(20)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-2 h-2 bg-[#6f9c45] rounded-full opacity-60"
+                  className="absolute w-3 h-3 bg-[#6c8192] rounded-full opacity-70"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    animation: `float ${4 + Math.random() * 3}s ease-in-out infinite`,
+                    animation: `brownianMotion ${8 + Math.random() * 4}s ease-in-out infinite`,
+                    animationDelay: `${Math.random() * 3}s`
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Additional Purple Particles */}
+            <div className="absolute inset-0 overflow-hidden">
+              {[...Array(12)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-2 h-2 bg-[#370e48] rounded-full opacity-60"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animation: `brownianMotion ${6 + Math.random() * 3}s ease-in-out infinite`,
                     animationDelay: `${Math.random() * 2}s`
                   }}
                 />
@@ -82,13 +99,13 @@ export default function Home() {
 
             {/* Mouse-following Glow Effect */}
             <div 
-              className="absolute w-96 h-96 rounded-full pointer-events-none transition-all duration-300 ease-out"
+              className="absolute w-96 h-96 rounded-full pointer-events-none transition-all duration-500 ease-out"
               style={{
                 left: mousePosition.x - 192,
                 top: mousePosition.y - 192,
-                background: `radial-gradient(circle, rgba(111, 156, 69, 0.3) 0%, transparent 70%)`,
-                transform: isHovering ? 'scale(1.5)' : 'scale(1)',
-                opacity: isHovering ? 1 : 0.3
+                background: `radial-gradient(circle, rgba(108, 129, 146, 0.4) 0%, transparent 70%)`,
+                transform: isHovering ? 'scale(1.8)' : 'scale(1)',
+                opacity: isHovering ? 1 : 0.2
               }}
             />
 
@@ -105,18 +122,18 @@ export default function Home() {
                 <div 
                   className="absolute inset-0 rounded-xl"
                   style={{
-                    background: `conic-gradient(from ${mousePosition.x}deg, #6f9c45, #370e48, #1e3f56, #6c8192, #6f9c45)`,
-                    opacity: isHovering ? 0.3 : 0.1,
-                    transition: 'opacity 0.3s ease'
+                    background: `conic-gradient(from ${mousePosition.x}deg, #6c8192, #370e48, #1e3f56, #6c8192)`,
+                    opacity: isHovering ? 0.4 : 0.15,
+                    transition: 'opacity 0.5s ease'
                   }}
                 />
-                <div className="relative bg-gradient-to-br from-[#1e3f56] to-[#370e48] p-4 rounded-xl border border-[#6f9c45]/50">
+                <div className="relative bg-gradient-to-br from-[#1e3f56] to-[#370e48] p-4 rounded-xl border border-[#6c8192]/50">
                   <Image
                     src="/coc_base.PNG"
                     alt="David's Clash of Clans Town Hall 15 Base"
                     width={800}
                     height={600}
-                    className="w-full h-auto rounded-lg shadow-2xl transition-transform duration-300 hover:scale-105"
+                    className="w-full h-auto rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105"
                     priority
                   />
                 </div>
@@ -131,29 +148,35 @@ export default function Home() {
                 ].map((stat, index) => (
                   <div 
                     key={index}
-                    className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#6f9c45]/30 hover:border-[#6f9c45] transition-all duration-300 hover:scale-105"
+                    className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#6c8192]/30 hover:border-[#6c8192] transition-all duration-500 hover:scale-105"
                     style={{
-                      animation: `cardFloat ${3 + index}s ease-in-out infinite`,
-                      animationDelay: `${index * 0.5}s`
+                      animation: `cardFloat ${4 + index * 0.5}s cubic-bezier(0.4, 0, 0.2, 1) ease-in-out infinite`,
+                      animationDelay: `${index * 0.3}s`
                     }}
                   >
-                    <h3 className="text-[#6f9c45] font-bold text-xl mb-2">{stat.icon} {stat.title}</h3>
+                    <h3 className="text-[#6c8192] font-bold text-xl mb-2">{stat.icon} {stat.title}</h3>
                     <p className="text-white text-2xl font-bold">{stat.value}</p>
                     <p className="text-[#6c8192] text-sm">{stat.subtitle}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Call to Action */}
+              {/* Physical Button */}
               <div className="text-center mt-8">
                 <button 
-                  className="relative overflow-hidden bg-gradient-to-r from-[#6f9c45] to-[#370e48] hover:from-[#370e48] hover:to-[#6f9c45] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
+                  className={`relative overflow-hidden bg-gradient-to-r from-[#370e48] to-[#1e3f56] text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg border-2 border-[#6c8192]/50 ${
+                    buttonPressed ? 'transform translate-y-2 shadow-inner' : 'transform translate-y-0 hover:translate-y-[-2px] hover:shadow-xl'
+                  }`}
+                  onMouseDown={() => setButtonPressed(true)}
+                  onMouseUp={() => setButtonPressed(false)}
+                  onMouseLeave={() => setButtonPressed(false)}
                   style={{
-                    animation: isHovering ? 'pulse 1s ease-in-out infinite' : 'none'
+                    animation: isHovering ? 'buttonPulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite' : 'none'
                   }}
                 >
                   <span className="relative z-10">Join My Clan</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#6c8192]/20 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#6c8192]/10 to-transparent rounded-lg" />
                 </button>
               </div>
             </div>
@@ -223,23 +246,48 @@ export default function Home() {
         }
         
         @keyframes stripeMove {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100vw); }
+          0% { transform: translateX(-100%) scaleY(1); }
+          50% { transform: translateX(50vw) scaleY(1.2); }
+          100% { transform: translateX(100vw) scaleY(1); }
         }
         
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
+        @keyframes brownianMotion {
+          0%, 100% { 
+            transform: translate(0px, 0px) rotate(0deg); 
+            opacity: 0.7;
+          }
+          25% { 
+            transform: translate(20px, -15px) rotate(90deg); 
+            opacity: 0.9;
+          }
+          50% { 
+            transform: translate(-10px, 25px) rotate(180deg); 
+            opacity: 0.5;
+          }
+          75% { 
+            transform: translate(15px, -5px) rotate(270deg); 
+            opacity: 0.8;
+          }
         }
         
         @keyframes cardFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+          }
+          50% { 
+            transform: translateY(-15px) rotate(1deg); 
+          }
         }
         
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+        @keyframes buttonPulse {
+          0%, 100% { 
+            transform: scale(1) translateY(0); 
+            box-shadow: 0 10px 25px rgba(108, 129, 146, 0.3);
+          }
+          50% { 
+            transform: scale(1.02) translateY(-1px); 
+            box-shadow: 0 15px 35px rgba(108, 129, 146, 0.5);
+          }
         }
         
         @keyframes shimmer {

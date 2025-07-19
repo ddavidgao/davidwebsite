@@ -7,15 +7,37 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
+  const [gradientPosition, setGradientPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      if (isHovering) {
+        // Reactive gradient movement based on mouse position
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        setGradientPosition({ x, y });
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isHovering]);
+
+  // Random gradient movement when not hovering
+  useEffect(() => {
+    if (!isHovering) {
+      const interval = setInterval(() => {
+        setGradientPosition({
+          x: Math.random() * 100,
+          y: Math.random() * 100
+        });
+      }, 2000 + Math.random() * 3000); // Random intervals between 2-5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [isHovering]);
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
@@ -64,7 +86,7 @@ export default function Home() {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
             style={{
-              background: `linear-gradient(45deg, 
+              background: `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
                 #370e48 0%, 
                 #370e48 15%, 
                 #1e3f56 25%, 
@@ -74,8 +96,7 @@ export default function Home() {
                 #1e3f56 75%, 
                 #370e48 85%, 
                 #370e48 100%)`,
-              backgroundSize: '400% 400%',
-              animation: isHovering ? 'gradientShift 2s ease infinite' : 'gradientShift 8s ease infinite'
+              transition: isHovering ? 'none' : 'all 3s ease-in-out'
             }}
           >
             {/* Dynamic Geometric Patterns */}
@@ -90,9 +111,9 @@ export default function Home() {
                     left: `${i * 12}%`,
                     top: `${i * 8}%`,
                     animation: isHovering 
-                      ? `geometricRotate ${4 + i * 1}s linear infinite`
-                      : `geometricRotate ${12 + i * 3}s linear infinite`,
-                    animationDelay: `${i * 0.5}s`,
+                      ? `geometricBrownian ${2 + Math.random() * 3}s ease-in-out infinite`
+                      : `geometricFloat ${8 + Math.random() * 4}s ease-in-out infinite`,
+                    animationDelay: `${i * 0.3}s`,
                     transform: `rotate(${i * 45}deg)`
                   }}
                 />
@@ -112,9 +133,9 @@ export default function Home() {
                     top: `${Math.random() * 100}%`,
                     background: `radial-gradient(circle, rgba(55, 14, 72, 0.8) 0%, rgba(108, 129, 146, 0.4) 70%, transparent 100%)`,
                     animation: isHovering 
-                      ? `energyFloat ${3 + Math.random() * 2}s ease-in-out infinite`
-                      : `energyFloat ${8 + Math.random() * 4}s ease-in-out infinite`,
-                    animationDelay: `${Math.random() * 3}s`,
+                      ? `energyBrownian ${1.5 + Math.random() * 2}s ease-in-out infinite`
+                      : `energyFloat ${6 + Math.random() * 3}s ease-in-out infinite`,
+                    animationDelay: `${Math.random() * 2}s`,
                     filter: 'blur(1px)'
                   }}
                 />
@@ -131,10 +152,10 @@ export default function Home() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                     animation: isHovering 
-                      ? `brownianMotion ${8 + Math.random() * 4}s ease-in-out infinite`
-                      : `fluidFloat ${12 + Math.random() * 6}s ease-in-out infinite`,
-                    animationDelay: isHovering ? `${Math.random() * 3}s` : `${Math.random() * 2}s`,
-                    opacity: isHovering ? 0.7 : 0.3
+                      ? `brownianMotion ${3 + Math.random() * 2}s ease-in-out infinite`
+                      : `fluidFloat ${8 + Math.random() * 4}s ease-in-out infinite`,
+                    animationDelay: isHovering ? `${Math.random() * 1}s` : `${Math.random() * 2}s`,
+                    opacity: isHovering ? 0.8 : 0.3
                   }}
                 />
               ))}
@@ -150,10 +171,10 @@ export default function Home() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                     animation: isHovering 
-                      ? `brownianMotion ${6 + Math.random() * 3}s ease-in-out infinite`
-                      : `fluidFloat ${10 + Math.random() * 4}s ease-in-out infinite`,
-                    animationDelay: isHovering ? `${Math.random() * 2}s` : `${Math.random() * 1.5}s`,
-                    opacity: isHovering ? 0.6 : 0.2
+                      ? `brownianMotion ${2 + Math.random() * 1.5}s ease-in-out infinite`
+                      : `fluidFloat ${6 + Math.random() * 3}s ease-in-out infinite`,
+                    animationDelay: isHovering ? `${Math.random() * 0.5}s` : `${Math.random() * 1.5}s`,
+                    opacity: isHovering ? 0.7 : 0.2
                   }}
                 />
               ))}
@@ -161,13 +182,13 @@ export default function Home() {
 
             {/* Mouse-following Glow Effect */}
             <div 
-              className="absolute w-96 h-96 rounded-full pointer-events-none transition-all duration-500 ease-out"
+              className="absolute w-96 h-96 rounded-full pointer-events-none transition-all duration-300 ease-out"
               style={{
                 left: mousePosition.x - 192,
                 top: mousePosition.y - 192,
                 background: `radial-gradient(circle, rgba(55, 14, 72, 0.4) 0%, transparent 70%)`,
-                transform: isHovering ? 'scale(1.8)' : 'scale(1)',
-                opacity: isHovering ? 1 : 0.2
+                transform: isHovering ? 'scale(2)' : 'scale(1)',
+                opacity: isHovering ? 1 : 0.1
               }}
             />
 
@@ -272,16 +293,47 @@ export default function Home() {
       </footer>
 
       <style jsx>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+        @keyframes geometricBrownian {
+          0%, 100% { 
+            transform: translate(0px, 0px) rotate(0deg) scale(1); 
+          }
+          25% { 
+            transform: translate(15px, -10px) rotate(90deg) scale(1.1); 
+          }
+          50% { 
+            transform: translate(-8px, 20px) rotate(180deg) scale(0.9); 
+          }
+          75% { 
+            transform: translate(12px, -5px) rotate(270deg) scale(1.05); 
+          }
         }
         
-        @keyframes geometricRotate {
-          0% { transform: rotate(0deg) scale(1); }
-          50% { transform: rotate(180deg) scale(1.1); }
-          100% { transform: rotate(360deg) scale(1); }
+        @keyframes geometricFloat {
+          0%, 100% { 
+            transform: translate(0px, 0px) rotate(0deg) scale(1); 
+          }
+          50% { 
+            transform: translate(0px, -20px) rotate(180deg) scale(1.1); 
+          }
+        }
+        
+        @keyframes energyBrownian {
+          0%, 100% { 
+            transform: translate(0px, 0px) scale(1); 
+            opacity: 0.6;
+          }
+          25% { 
+            transform: translate(20px, -15px) scale(1.3); 
+            opacity: 0.9;
+          }
+          50% { 
+            transform: translate(-12px, 25px) scale(0.7); 
+            opacity: 0.3;
+          }
+          75% { 
+            transform: translate(18px, -8px) scale(1.2); 
+            opacity: 0.8;
+          }
         }
         
         @keyframes energyFloat {
@@ -306,19 +358,19 @@ export default function Home() {
         @keyframes brownianMotion {
           0%, 100% { 
             transform: translate(0px, 0px) rotate(0deg); 
-            opacity: 0.7;
+            opacity: 0.8;
           }
           25% { 
-            transform: translate(20px, -15px) rotate(90deg); 
-            opacity: 0.9;
+            transform: translate(25px, -20px) rotate(90deg); 
+            opacity: 1;
           }
           50% { 
-            transform: translate(-10px, 25px) rotate(180deg); 
-            opacity: 0.5;
+            transform: translate(-15px, 30px) rotate(180deg); 
+            opacity: 0.6;
           }
           75% { 
-            transform: translate(15px, -5px) rotate(270deg); 
-            opacity: 0.8;
+            transform: translate(20px, -10px) rotate(270deg); 
+            opacity: 0.9;
           }
         }
         

@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* Clash of Clans Section - Unique and Showy */}
+        {/* Clash of Clans Section - Dynamic and Sophisticated */}
         <section className="mb-16 relative">
           <div 
             className="relative overflow-hidden rounded-2xl border-2 border-[#6c8192] shadow-2xl"
@@ -48,18 +48,40 @@ export default function Home() {
               animation: isHovering ? 'gradientShift 3s ease infinite' : 'none'
             }}
           >
-            {/* Animated Stripes with Fluid Motion */}
-            <div className="absolute inset-0 opacity-40">
-              {[...Array(25)].map((_, i) => (
+            {/* Dynamic Geometric Patterns */}
+            <div className="absolute inset-0 opacity-30">
+              {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute h-1 bg-gradient-to-r from-transparent via-[#6c8192] to-transparent"
+                  className="absolute border border-[#6c8192]/40"
                   style={{
-                    top: `${i * 4}%`,
-                    left: '-100%',
-                    right: '-100%',
-                    animation: `stripeMove ${2.5 + i * 0.08}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
-                    animationDelay: `${i * 0.05}s`
+                    width: `${100 + i * 20}px`,
+                    height: `${100 + i * 20}px`,
+                    left: `${i * 12}%`,
+                    top: `${i * 8}%`,
+                    animation: `geometricRotate ${8 + i * 2}s linear infinite`,
+                    animationDelay: `${i * 0.5}s`,
+                    transform: `rotate(${i * 45}deg)`
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Floating Energy Orbs */}
+            <div className="absolute inset-0 overflow-hidden">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    width: `${20 + i * 8}px`,
+                    height: `${20 + i * 8}px`,
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    background: `radial-gradient(circle, rgba(108, 129, 146, 0.8) 0%, rgba(55, 14, 72, 0.4) 70%, transparent 100%)`,
+                    animation: `energyFloat ${6 + Math.random() * 4}s ease-in-out infinite`,
+                    animationDelay: `${Math.random() * 3}s`,
+                    filter: 'blur(1px)'
                   }}
                 />
               ))}
@@ -67,10 +89,10 @@ export default function Home() {
 
             {/* Brownian Motion Particles */}
             <div className="absolute inset-0 overflow-hidden">
-              {[...Array(20)].map((_, i) => (
+              {[...Array(15)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-3 h-3 bg-[#6c8192] rounded-full opacity-70"
+                  className="absolute w-2 h-2 bg-[#6c8192] rounded-full opacity-70"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
@@ -83,10 +105,10 @@ export default function Home() {
 
             {/* Additional Purple Particles */}
             <div className="absolute inset-0 overflow-hidden">
-              {[...Array(12)].map((_, i) => (
+              {[...Array(10)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-2 h-2 bg-[#370e48] rounded-full opacity-60"
+                  className="absolute w-1 h-1 bg-[#370e48] rounded-full opacity-60"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
@@ -113,7 +135,7 @@ export default function Home() {
             <div className="relative z-10 p-8">
               <div className="text-center mb-8">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-                  🏰 Clash of Clans Base
+                  Clash of Clans Base
                 </h2>
               </div>
 
@@ -137,28 +159,6 @@ export default function Home() {
                     priority
                   />
                 </div>
-              </div>
-
-              {/* Animated Stats Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                {[
-                  { icon: "🏆", title: "Town Hall", value: "15", subtitle: "Maximum Level" },
-                  { icon: "⚔️", title: "Strategy", value: "Hybrid Defense", subtitle: "Anti-3 Star Layout" },
-                  { icon: "🎯", title: "Focus", value: "Resource Protection", subtitle: "War Performance" }
-                ].map((stat, index) => (
-                  <div 
-                    key={index}
-                    className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-[#6c8192]/30 hover:border-[#6c8192] transition-all duration-500 hover:scale-105"
-                    style={{
-                      animation: `cardFloat ${4 + index * 0.5}s cubic-bezier(0.4, 0, 0.2, 1) ease-in-out infinite`,
-                      animationDelay: `${index * 0.3}s`
-                    }}
-                  >
-                    <h3 className="text-[#6c8192] font-bold text-xl mb-2">{stat.icon} {stat.title}</h3>
-                    <p className="text-white text-2xl font-bold">{stat.value}</p>
-                    <p className="text-[#6c8192] text-sm">{stat.subtitle}</p>
-                  </div>
-                ))}
               </div>
 
               {/* Physical Button */}
@@ -191,7 +191,7 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-blue-400 font-bold text-xl mb-4">💻 Development</h3>
+                <h3 className="text-blue-400 font-bold text-xl mb-4">Development</h3>
                 <p className="text-gray-300 leading-relaxed">
                   I'm a passionate developer who loves creating innovative solutions. 
                   When I'm not coding, you'll find me strategizing in Clash of Clans 
@@ -199,7 +199,7 @@ export default function Home() {
                 </p>
               </div>
               <div>
-                <h3 className="text-blue-400 font-bold text-xl mb-4">🎮 Gaming</h3>
+                <h3 className="text-blue-400 font-bold text-xl mb-4">Gaming</h3>
                 <p className="text-gray-300 leading-relaxed">
                   Clash of Clans has been my go-to mobile game for years. I enjoy 
                   the strategic depth, base building, and the competitive clan wars. 
@@ -245,10 +245,29 @@ export default function Home() {
           100% { background-position: 0% 50%; }
         }
         
-        @keyframes stripeMove {
-          0% { transform: translateX(-100%) scaleY(1); }
-          50% { transform: translateX(50vw) scaleY(1.2); }
-          100% { transform: translateX(100vw) scaleY(1); }
+        @keyframes geometricRotate {
+          0% { transform: rotate(0deg) scale(1); }
+          50% { transform: rotate(180deg) scale(1.1); }
+          100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        @keyframes energyFloat {
+          0%, 100% { 
+            transform: translateY(0px) scale(1); 
+            opacity: 0.6;
+          }
+          25% { 
+            transform: translateY(-30px) scale(1.2); 
+            opacity: 0.9;
+          }
+          50% { 
+            transform: translateY(-15px) scale(0.8); 
+            opacity: 0.4;
+          }
+          75% { 
+            transform: translateY(-45px) scale(1.1); 
+            opacity: 0.7;
+          }
         }
         
         @keyframes brownianMotion {
@@ -267,15 +286,6 @@ export default function Home() {
           75% { 
             transform: translate(15px, -5px) rotate(270deg); 
             opacity: 0.8;
-          }
-        }
-        
-        @keyframes cardFloat {
-          0%, 100% { 
-            transform: translateY(0px) rotate(0deg); 
-          }
-          50% { 
-            transform: translateY(-15px) rotate(1deg); 
           }
         }
         

@@ -25,7 +25,7 @@ export default function Home() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isHovering]);
 
-  // Random gradient movement when not hovering
+  // Smooth random gradient movement when not hovering
   useEffect(() => {
     if (!isHovering) {
       const interval = setInterval(() => {
@@ -33,7 +33,7 @@ export default function Home() {
           x: Math.random() * 100,
           y: Math.random() * 100
         });
-      }, 2000 + Math.random() * 3000); // Random intervals between 2-5 seconds
+      }, 4000 + Math.random() * 6000); // Longer, more fluid intervals
 
       return () => clearInterval(interval);
     }
@@ -96,7 +96,7 @@ export default function Home() {
                 #1e3f56 75%, 
                 #370e48 85%, 
                 #370e48 100%)`,
-              transition: isHovering ? 'none' : 'all 3s ease-in-out'
+              transition: isHovering ? 'none' : 'all 4s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
           >
             {/* Dynamic Geometric Patterns */}
@@ -111,9 +111,9 @@ export default function Home() {
                     left: `${i * 12}%`,
                     top: `${i * 8}%`,
                     animation: isHovering 
-                      ? `geometricBrownian ${2 + Math.random() * 3}s ease-in-out infinite`
-                      : `geometricFloat ${8 + Math.random() * 4}s ease-in-out infinite`,
-                    animationDelay: `${i * 0.3}s`,
+                      ? `fluidGeometric ${3 + Math.random() * 2}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
+                      : `gentleFloat ${12 + Math.random() * 6}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
+                    animationDelay: `${i * 0.4}s`,
                     transform: `rotate(${i * 45}deg)`
                   }}
                 />
@@ -133,8 +133,8 @@ export default function Home() {
                     top: `${Math.random() * 100}%`,
                     background: `radial-gradient(circle, rgba(55, 14, 72, 0.8) 0%, rgba(108, 129, 146, 0.4) 70%, transparent 100%)`,
                     animation: isHovering 
-                      ? `energyBrownian ${1.5 + Math.random() * 2}s ease-in-out infinite`
-                      : `energyFloat ${6 + Math.random() * 3}s ease-in-out infinite`,
+                      ? `fluidEnergy ${2 + Math.random() * 1.5}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
+                      : `gentleEnergy ${8 + Math.random() * 4}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
                     animationDelay: `${Math.random() * 2}s`,
                     filter: 'blur(1px)'
                   }}
@@ -152,8 +152,8 @@ export default function Home() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                     animation: isHovering 
-                      ? `brownianMotion ${3 + Math.random() * 2}s ease-in-out infinite`
-                      : `fluidFloat ${8 + Math.random() * 4}s ease-in-out infinite`,
+                      ? `fluidParticle ${4 + Math.random() * 2}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
+                      : `gentleParticle ${10 + Math.random() * 5}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
                     animationDelay: isHovering ? `${Math.random() * 1}s` : `${Math.random() * 2}s`,
                     opacity: isHovering ? 0.8 : 0.3
                   }}
@@ -171,8 +171,8 @@ export default function Home() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                     animation: isHovering 
-                      ? `brownianMotion ${2 + Math.random() * 1.5}s ease-in-out infinite`
-                      : `fluidFloat ${6 + Math.random() * 3}s ease-in-out infinite`,
+                      ? `fluidParticle ${3 + Math.random() * 1.5}s cubic-bezier(0.4, 0, 0.2, 1) infinite`
+                      : `gentleParticle ${8 + Math.random() * 4}s cubic-bezier(0.4, 0, 0.2, 1) infinite`,
                     animationDelay: isHovering ? `${Math.random() * 0.5}s` : `${Math.random() * 1.5}s`,
                     opacity: isHovering ? 0.7 : 0.2
                   }}
@@ -182,7 +182,7 @@ export default function Home() {
 
             {/* Mouse-following Glow Effect */}
             <div 
-              className="absolute w-96 h-96 rounded-full pointer-events-none transition-all duration-300 ease-out"
+              className="absolute w-96 h-96 rounded-full pointer-events-none transition-all duration-500 ease-out"
               style={{
                 left: mousePosition.x - 192,
                 top: mousePosition.y - 192,
@@ -214,8 +214,8 @@ export default function Home() {
                 <div 
                   className="relative bg-gradient-to-br from-[#370e48] to-[#1e3f56] rounded-xl border border-[#370e48]/50 transition-all duration-500"
                   style={{
-                    transform: isImageHovered ? 'scale(1.05)' : 'scale(1)',
-                    padding: isImageHovered ? '2rem' : '1rem'
+                    transform: isImageHovered ? 'scale(1.08)' : 'scale(1)',
+                    padding: isImageHovered ? '2.5rem' : '1rem'
                   }}
                   onMouseEnter={() => setIsImageHovered(true)}
                   onMouseLeave={() => setIsImageHovered(false)}
@@ -293,102 +293,105 @@ export default function Home() {
       </footer>
 
       <style jsx>{`
-        @keyframes geometricBrownian {
+        @keyframes fluidGeometric {
           0%, 100% { 
             transform: translate(0px, 0px) rotate(0deg) scale(1); 
           }
-          25% { 
-            transform: translate(15px, -10px) rotate(90deg) scale(1.1); 
+          20% { 
+            transform: translate(8px, -12px) rotate(45deg) scale(1.05); 
           }
-          50% { 
-            transform: translate(-8px, 20px) rotate(180deg) scale(0.9); 
+          40% { 
+            transform: translate(-6px, 8px) rotate(90deg) scale(0.95); 
           }
-          75% { 
-            transform: translate(12px, -5px) rotate(270deg) scale(1.05); 
+          60% { 
+            transform: translate(12px, -4px) rotate(135deg) scale(1.08); 
+          }
+          80% { 
+            transform: translate(-8px, 16px) rotate(180deg) scale(0.92); 
           }
         }
         
-        @keyframes geometricFloat {
+        @keyframes gentleFloat {
           0%, 100% { 
             transform: translate(0px, 0px) rotate(0deg) scale(1); 
           }
           50% { 
-            transform: translate(0px, -20px) rotate(180deg) scale(1.1); 
+            transform: translate(0px, -15px) rotate(180deg) scale(1.05); 
           }
         }
         
-        @keyframes energyBrownian {
+        @keyframes fluidEnergy {
           0%, 100% { 
             transform: translate(0px, 0px) scale(1); 
             opacity: 0.6;
           }
           25% { 
-            transform: translate(20px, -15px) scale(1.3); 
+            transform: translate(12px, -8px) scale(1.2); 
             opacity: 0.9;
           }
           50% { 
-            transform: translate(-12px, 25px) scale(0.7); 
-            opacity: 0.3;
-          }
-          75% { 
-            transform: translate(18px, -8px) scale(1.2); 
-            opacity: 0.8;
-          }
-        }
-        
-        @keyframes energyFloat {
-          0%, 100% { 
-            transform: translateY(0px) scale(1); 
-            opacity: 0.6;
-          }
-          25% { 
-            transform: translateY(-30px) scale(1.2); 
-            opacity: 0.9;
-          }
-          50% { 
-            transform: translateY(-15px) scale(0.8); 
+            transform: translate(-8px, 12px) scale(0.8); 
             opacity: 0.4;
           }
           75% { 
-            transform: translateY(-45px) scale(1.1); 
+            transform: translate(10px, -6px) scale(1.1); 
             opacity: 0.7;
           }
         }
         
-        @keyframes brownianMotion {
+        @keyframes gentleEnergy {
+          0%, 100% { 
+            transform: translateY(0px) scale(1); 
+            opacity: 0.6;
+          }
+          33% { 
+            transform: translateY(-20px) scale(1.1); 
+            opacity: 0.8;
+          }
+          66% { 
+            transform: translateY(-10px) scale(0.9); 
+            opacity: 0.5;
+          }
+        }
+        
+        @keyframes fluidParticle {
           0%, 100% { 
             transform: translate(0px, 0px) rotate(0deg); 
             opacity: 0.8;
           }
-          25% { 
-            transform: translate(25px, -20px) rotate(90deg); 
+          20% { 
+            transform: translate(15px, -10px) rotate(45deg); 
             opacity: 1;
           }
-          50% { 
-            transform: translate(-15px, 30px) rotate(180deg); 
+          40% { 
+            transform: translate(-8px, 18px) rotate(90deg); 
             opacity: 0.6;
           }
-          75% { 
-            transform: translate(20px, -10px) rotate(270deg); 
+          60% { 
+            transform: translate(20px, -5px) rotate(135deg); 
             opacity: 0.9;
+          }
+          80% { 
+            transform: translate(-12px, 25px) rotate(180deg); 
+            opacity: 0.7;
           }
         }
         
-        @keyframes fluidFloat {
+        @keyframes gentleParticle {
           0%, 100% { 
             transform: translate(0px, 0px) scale(1); 
             opacity: 0.3;
           }
           25% { 
-            transform: translate(15px, -20px) scale(1.1); 
+            transform: translate(8px, -12px) scale(1.05); 
             opacity: 0.5;
           }
           50% { 
-            transform: translate(-10px, -10px) scale(0.9); 
+            transform: translate(-5px, -8px) scale(0.95); 
             opacity: 0.2;
           }
           75% { 
-            transform: translate(20px, -30px) scale(1.05); 
+            transform: translate(10px, -15px) scale(1.02); 
             opacity: 0.4;
           }
         }

@@ -75,7 +75,7 @@ export default function Home() {
                 #370e48 85%, 
                 #370e48 100%)`,
               backgroundSize: '400% 400%',
-              animation: 'gradientShift 4s ease infinite'
+              animation: isHovering ? 'gradientShift 2s ease infinite' : 'gradientShift 8s ease infinite'
             }}
           >
             {/* Dynamic Geometric Patterns */}
@@ -89,7 +89,9 @@ export default function Home() {
                     height: `${100 + i * 20}px`,
                     left: `${i * 12}%`,
                     top: `${i * 8}%`,
-                    animation: `geometricRotate ${8 + i * 2}s linear infinite`,
+                    animation: isHovering 
+                      ? `geometricRotate ${4 + i * 1}s linear infinite`
+                      : `geometricRotate ${12 + i * 3}s linear infinite`,
                     animationDelay: `${i * 0.5}s`,
                     transform: `rotate(${i * 45}deg)`
                   }}
@@ -109,7 +111,9 @@ export default function Home() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                     background: `radial-gradient(circle, rgba(55, 14, 72, 0.8) 0%, rgba(108, 129, 146, 0.4) 70%, transparent 100%)`,
-                    animation: `energyFloat ${6 + Math.random() * 4}s ease-in-out infinite`,
+                    animation: isHovering 
+                      ? `energyFloat ${3 + Math.random() * 2}s ease-in-out infinite`
+                      : `energyFloat ${8 + Math.random() * 4}s ease-in-out infinite`,
                     animationDelay: `${Math.random() * 3}s`,
                     filter: 'blur(1px)'
                   }}
@@ -175,7 +179,7 @@ export default function Home() {
                 </h2>
               </div>
 
-              {/* Base Image with Dynamic Effects */}
+              {/* Base Image with Dynamic Effects - Perfectly Synchronized */}
               <div className="relative max-w-4xl mx-auto">
                 <div 
                   className="absolute inset-0 rounded-xl transition-all duration-500"
@@ -200,7 +204,10 @@ export default function Home() {
                     alt="David's Clash of Clans Town Hall 15 Base"
                     width={800}
                     height={600}
-                    className="w-full h-auto rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105"
+                    className="w-full h-auto rounded-lg shadow-2xl transition-all duration-500"
+                    style={{
+                      transform: isImageHovered ? 'scale(1.05)' : 'scale(1)'
+                    }}
                     priority
                   />
                 </div>

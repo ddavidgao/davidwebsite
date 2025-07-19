@@ -66,12 +66,16 @@ export default function Home() {
             style={{
               background: `linear-gradient(45deg, 
                 #370e48 0%, 
+                #370e48 15%, 
                 #1e3f56 25%, 
-                #6c8192 50%, 
-                #370e48 75%, 
-                #1e3f56 100%)`,
+                #6c8192 35%, 
+                #370e48 50%, 
+                #370e48 65%, 
+                #1e3f56 75%, 
+                #370e48 85%, 
+                #370e48 100%)`,
               backgroundSize: '400% 400%',
-              animation: isHovering ? 'gradientShift 3s ease infinite' : 'none'
+              animation: 'gradientShift 4s ease infinite'
             }}
           >
             {/* Dynamic Geometric Patterns */}
@@ -79,7 +83,7 @@ export default function Home() {
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute border border-[#6c8192]/40"
+                  className="absolute border border-[#370e48]/40"
                   style={{
                     width: `${100 + i * 20}px`,
                     height: `${100 + i * 20}px`,
@@ -104,7 +108,7 @@ export default function Home() {
                     height: `${20 + i * 8}px`,
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    background: `radial-gradient(circle, rgba(108, 129, 146, 0.8) 0%, rgba(55, 14, 72, 0.4) 70%, transparent 100%)`,
+                    background: `radial-gradient(circle, rgba(55, 14, 72, 0.8) 0%, rgba(108, 129, 146, 0.4) 70%, transparent 100%)`,
                     animation: `energyFloat ${6 + Math.random() * 4}s ease-in-out infinite`,
                     animationDelay: `${Math.random() * 3}s`,
                     filter: 'blur(1px)'
@@ -113,35 +117,39 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Brownian Motion Particles - Only active on hover */}
+            {/* Brownian Motion Particles - Enhanced fluid motion when not hovering */}
             <div className="absolute inset-0 overflow-hidden">
               {[...Array(15)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-2 h-2 bg-[#6c8192] rounded-full opacity-70"
+                  className="absolute w-2 h-2 bg-[#370e48] rounded-full"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    animation: isHovering ? `brownianMotion ${8 + Math.random() * 4}s ease-in-out infinite` : 'none',
-                    animationDelay: isHovering ? `${Math.random() * 3}s` : '0s',
-                    opacity: isHovering ? 0.7 : 0.1
+                    animation: isHovering 
+                      ? `brownianMotion ${8 + Math.random() * 4}s ease-in-out infinite`
+                      : `fluidFloat ${12 + Math.random() * 6}s ease-in-out infinite`,
+                    animationDelay: isHovering ? `${Math.random() * 3}s` : `${Math.random() * 2}s`,
+                    opacity: isHovering ? 0.7 : 0.3
                   }}
                 />
               ))}
             </div>
 
-            {/* Additional Purple Particles - Only active on hover */}
+            {/* Additional Purple Particles - Enhanced fluid motion when not hovering */}
             <div className="absolute inset-0 overflow-hidden">
               {[...Array(10)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-1 h-1 bg-[#370e48] rounded-full opacity-60"
+                  className="absolute w-1 h-1 bg-[#370e48] rounded-full"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    animation: isHovering ? `brownianMotion ${6 + Math.random() * 3}s ease-in-out infinite` : 'none',
-                    animationDelay: isHovering ? `${Math.random() * 2}s` : '0s',
-                    opacity: isHovering ? 0.6 : 0.05
+                    animation: isHovering 
+                      ? `brownianMotion ${6 + Math.random() * 3}s ease-in-out infinite`
+                      : `fluidFloat ${10 + Math.random() * 4}s ease-in-out infinite`,
+                    animationDelay: isHovering ? `${Math.random() * 2}s` : `${Math.random() * 1.5}s`,
+                    opacity: isHovering ? 0.6 : 0.2
                   }}
                 />
               ))}
@@ -153,7 +161,7 @@ export default function Home() {
               style={{
                 left: mousePosition.x - 192,
                 top: mousePosition.y - 192,
-                background: `radial-gradient(circle, rgba(108, 129, 146, 0.4) 0%, transparent 70%)`,
+                background: `radial-gradient(circle, rgba(55, 14, 72, 0.4) 0%, transparent 70%)`,
                 transform: isHovering ? 'scale(1.8)' : 'scale(1)',
                 opacity: isHovering ? 1 : 0.2
               }}
@@ -172,17 +180,17 @@ export default function Home() {
                 <div 
                   className="absolute inset-0 rounded-xl transition-all duration-500"
                   style={{
-                    background: `conic-gradient(from ${mousePosition.x}deg, #6c8192, #370e48, #1e3f56, #6c8192)`,
+                    background: `conic-gradient(from ${mousePosition.x}deg, #370e48, #370e48, #1e3f56, #6c8192, #370e48)`,
                     opacity: isHovering ? 0.4 : 0.15,
                     transform: isImageHovered ? 'scale(1.05)' : 'scale(1)',
                     transition: 'opacity 0.5s ease, transform 0.5s ease'
                   }}
                 />
                 <div 
-                  className="relative bg-gradient-to-br from-[#1e3f56] to-[#370e48] p-4 rounded-xl border border-[#6c8192]/50 transition-all duration-500"
+                  className="relative bg-gradient-to-br from-[#370e48] to-[#1e3f56] rounded-xl border border-[#370e48]/50 transition-all duration-500"
                   style={{
-                    transform: isImageHovered ? 'scale(1.02)' : 'scale(1)',
-                    padding: isImageHovered ? '1.5rem' : '1rem'
+                    transform: isImageHovered ? 'scale(1.05)' : 'scale(1)',
+                    padding: isImageHovered ? '2rem' : '1rem'
                   }}
                   onMouseEnter={() => setIsImageHovered(true)}
                   onMouseLeave={() => setIsImageHovered(false)}
@@ -304,6 +312,25 @@ export default function Home() {
           75% { 
             transform: translate(15px, -5px) rotate(270deg); 
             opacity: 0.8;
+          }
+        }
+        
+        @keyframes fluidFloat {
+          0%, 100% { 
+            transform: translate(0px, 0px) scale(1); 
+            opacity: 0.3;
+          }
+          25% { 
+            transform: translate(15px, -20px) scale(1.1); 
+            opacity: 0.5;
+          }
+          50% { 
+            transform: translate(-10px, -10px) scale(0.9); 
+            opacity: 0.2;
+          }
+          75% { 
+            transform: translate(20px, -30px) scale(1.05); 
+            opacity: 0.4;
           }
         }
         

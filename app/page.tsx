@@ -71,11 +71,11 @@ export default function Home() {
 
       {/* Header */}
       <header className="text-center py-8 relative z-10">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
+        <h1 className="text-4xl md:text-6xl font-display text-white mb-2 tracking-tight">
           David Gao
         </h1>
         <p className="text-gray-400 text-lg md:text-xl">
-          Developer & Clash of Clans Enthusiast
+          CS Student @ Purdue University
         </p>
       </header>
 
@@ -200,7 +200,10 @@ export default function Home() {
             {/* Content */}
             <div className="relative z-10 p-8">
               <div className="text-center mb-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+                <h2 
+                  className="text-4xl md:text-5xl text-white mb-4 drop-shadow-lg tracking-tight"
+                  style={{ fontFamily: 'ClashBold, Arial, sans-serif', fontWeight: 'bold' }}
+                >
                   Clash of Clans Base
                 </h2>
               </div>
@@ -244,21 +247,21 @@ export default function Home() {
         {/* About Section */}
         <section className="mb-16">
           <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-display text-white mb-6 text-center tracking-tight">
               About Me
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-blue-400 font-bold text-xl mb-4">Development</h3>
-                <p className="text-gray-300 leading-relaxed">
+                <h3 className="text-blue-400 font-semibold text-xl mb-4 tracking-wide">Development</h3>
+                <p className="text-gray-300 leading-relaxed font-normal">
                   I'm a passionate developer who loves creating innovative solutions. 
                   When I'm not coding, you'll find me strategizing in Clash of Clans 
                   or exploring new technologies.
                 </p>
               </div>
               <div>
-                <h3 className="text-blue-400 font-bold text-xl mb-4">Gaming</h3>
-                <p className="text-gray-300 leading-relaxed">
+                <h3 className="text-blue-400 font-semibold text-xl mb-4 tracking-wide">Gaming</h3>
+                <p className="text-gray-300 leading-relaxed font-normal">
                   Clash of Clans has been my go-to mobile game for years. I enjoy 
                   the strategic depth, base building, and the competitive clan wars. 
                   My base design reflects both functionality and creativity.
@@ -271,17 +274,17 @@ export default function Home() {
         {/* Contact Section */}
         <section>
           <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-display text-white mb-6 text-center tracking-tight">
               Let's Connect
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#" className="bg-gray-800 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+              <a href="#" className="bg-gray-800 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 tracking-wide">
                 GitHub
               </a>
-              <a href="#" className="bg-gray-800 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+              <a href="#" className="bg-gray-800 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 tracking-wide">
                 LinkedIn
               </a>
-              <a href="#" className="bg-gray-800 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+              <a href="#" className="bg-gray-800 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 tracking-wide">
                 Clash of Clans
               </a>
             </div>
@@ -291,7 +294,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="text-center py-8 mt-16 relative z-10">
-        <p className="text-gray-400">
+        <p className="text-gray-400 font-medium tracking-wide">
           © 2024 David Gao. Built with Next.js and Clash of Clans passion.
         </p>
       </footer>

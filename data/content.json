@@ -1,0 +1,80 @@
+{
+  "header": {
+    "name": "David Gao",
+    "subtitle": "CS Student @ Purdue University"
+  },
+  "sections": {
+    "experience": {
+      "title": "Experience",
+      "jobs": [
+        {
+          "id": "quture-fashion",
+          "title": "Software Engineer Intern",
+          "company": "Quture Fashion",
+          "type": "Internship",
+          "duration": "Mar 2025 - Present",
+          "length": "5 mos",
+          "description": "Enhancing fashion experiences through AI-driven clothing visualization.",
+          "logo": "quture-logo"
+        },
+        {
+          "id": "lifeguard",
+          "title": "Lifeguard",
+          "company": "Ruth Lake Country Club Inc",
+          "type": "Part-time",
+          "duration": "Jun 2024 - Aug 2024",
+          "length": "3 mos",
+          "description": "",
+          "logo": "ruth-lake-logo"
+        },
+        {
+          "id": "research-intern",
+          "title": "Research Intern",
+          "company": "Washington University in St. Louis",
+          "type": "Internship",
+          "duration": "Jun 2024 - Aug 2024",
+          "length": "3 mos",
+          "location": "St. Louis County, Missouri, United States",
+          "description": "Evaluated diffusion models for image reconstruction",
+          "logo": "washu-logo"
+        }
+      ]
+    },
+    "clashOfClans": {
+      "title": "Clash of Clans Base",
+      "image": {
+        "src": "/coc_base.PNG",
+        "alt": "David's Clash of Clans Town Hall 15 Base",
+        "hoverText": "Hover to zoom"
+      }
+    },
+    "about": {
+      "title": "About Me",
+      "description": "I'm a software developer exploring AI tools like PyTorch, TensorFlow, and Hugging Face. I build side projects, experiment with new libraries, and always appreciate insights from other developers.\n\nI'm also learning piano—reach out if you'd like to chat about code or Chopin."
+    },
+    "contact": {
+      "title": "Let's Connect",
+      "links": {
+        "github": {
+          "text": "GitHub",
+          "url": "https://github.com/theogtaco"
+        },
+        "linkedin": {
+          "text": "LinkedIn",
+          "url": "https://www.linkedin.com/in/david-gao-322837355/#"
+        },
+        "instagram": {
+          "text": "Instagram",
+          "url": "https://www.instagram.com/dvaidgao/"
+        },
+        "clashOfClans": {
+          "text": "Clash of Clans",
+          "url": "https://link.clashroyale.com/en/?p=71-5e5d3a3b-014c-4bab-b657-3d68f12f2b1b&supercell_id"
+        }
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 David Gao"
+  }
+} 

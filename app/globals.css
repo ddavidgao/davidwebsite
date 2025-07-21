@@ -197,6 +197,42 @@ button:active {
   transform: translateY(2px) scale(0.98);
 }
 
+/* 3D Button Effects */
+.button-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-3d:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+.button-3d:active {
+  transform: translateY(0) translateZ(0);
+}
+
+/* Enhanced shadow effects for buttons */
+.shadow-island {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shadow-island:hover {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-island:active {
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 /* Improved particle effects */
 .particle {
   will-change: transform, opacity;

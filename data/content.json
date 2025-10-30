@@ -4,6 +4,33 @@
     "subtitle": "CS Student @ Purdue University"
   },
   "sections": {
+    "projects": {
+      "title": "Projects",
+      "items": [
+        {
+          "id": "cardboardai",
+          "name": "CardboardAI",
+          "description": "AI-native self-storage management platform serving multiple facilities. Built custom LangGraph-inspired AI agent to automate tenant onboarding, invoice generation, and payment collection. Dual-portal architecture with operator dashboard and tenant self-service portal.",
+          "tech": ["Next.js", "TypeScript", "AWS RDS", "Prisma", "LangGraph"],
+          "links": {
+            "demo": "https://cardboardai.dev",
+            "github": "#"
+          },
+          "image": "/cardboardai-preview.png"
+        },
+        {
+          "id": "iot-locker",
+          "name": "IoT Locker Management System",
+          "description": "Commercial IoT locker system deployed to 40+ active units generating $100,000+ in revenue. Manages PIN-based access control and Stripe payments via QR code. Available on Amazon.",
+          "tech": ["Electron", "Express.js", "PostgreSQL", "Raspberry Pi", "AWS EC2"],
+          "links": {
+            "amazon": "#",
+            "github": "#"
+          },
+          "image": "/iot-locker-preview.png"
+        }
+      ]
+    },
     "experience": {
       "title": "Experience",
       "jobs": [
@@ -12,20 +39,13 @@
           "title": "Software Engineer Intern",
           "company": "Quture Fashion",
           "type": "Internship",
-          "duration": "Mar 2024 - Aug 2024",
+          "duration": "Mar 2025 - Aug 2025",
           "length": "6 mos",
-          "description": "Enhanced fashion experiences through AI-driven clothing visualization.",
+          "bullets": [
+            "Developed AI-powered virtual try-on features using computer vision and ML algorithms",
+            "Responded to security incident with compromised Stripe credentials; implemented emergency patches and strengthened authentication"
+          ],
           "logo": "quture-logo"
-        },
-        {
-          "id": "lifeguard",
-          "title": "Lifeguard",
-          "company": "Ruth Lake Country Club Inc",
-          "type": "Part-time",
-          "duration": "Jun 2024 - Aug 2024",
-          "length": "3 mos",
-          "description": "",
-          "logo": "ruth-lake-logo"
         },
         {
           "id": "research-intern",
@@ -34,30 +54,41 @@
           "type": "Internship",
           "duration": "Jun 2024 - Aug 2024",
           "length": "3 mos",
-          "location": "St. Louis County, Missouri, United States",
-          "description": "Evaluated diffusion models for image reconstruction",
+          "bullets": [
+            "Built evaluation pipeline for self-supervised medical image reconstruction using PyTorch and NumPy",
+            "Conducted experiments on diffusion models for MRI reconstruction; contributed to IEEE ISBI 2025 research paper"
+          ],
           "logo": "washu-logo"
         }
       ]
     },
-    "clashOfClans": {
-      "title": "Clash of Clans Base",
-      "image": {
-        "src": "/coc_base.PNG",
-        "alt": "David's Clash of Clans Town Hall 15 Base",
-        "hoverText": "Hover to zoom"
-      }
+    "skills": {
+      "title": "Skills",
+      "categories": [
+        {
+          "name": "Languages",
+          "items": ["Python", "Java", "JavaScript", "TypeScript", "SQL"]
+        },
+        {
+          "name": "Frameworks",
+          "items": ["React", "Next.js", "PyTorch", "TensorFlow", "Express.js"]
+        },
+        {
+          "name": "Tools",
+          "items": ["AWS (EC2, RDS)", "Vercel", "Docker", "Git", "Stripe API"]
+        }
+      ]
     },
     "about": {
       "title": "About Me",
-      "description": "I'm a software developer exploring AI tools like PyTorch, TensorFlow, and Hugging Face. I build side projects, experiment with new libraries, and always appreciate insights from other developers.\n\nI'm also learning piano—reach out if you'd like to chat about code or Chopin."
+      "description": "CS student at Purdue building production software. Created CardboardAI, an AI-native storage management platform, and engineered a commercial IoT locker system generating $100k+ revenue. Previously researched ML-based medical imaging at WashU (IEEE ISBI 2025). I build things that ship.\n\nAlso learning piano—reach out if you want to talk code or Chopin."
     },
     "contact": {
       "title": "Let's Connect",
       "links": {
         "github": {
           "text": "GitHub",
-          "url": "https://github.com/theogtaco"
+          "url": "https://github.com/ddavidgao"
         },
         "linkedin": {
           "text": "LinkedIn",
@@ -75,6 +106,6 @@
     }
   },
   "footer": {
-    "copyright": "© 2024 David Gao"
+    "copyright": "© 2025 David Gao"
   }
 } 

@@ -80,143 +80,126 @@ export default function Home() {
   const floatingIcons = [Crown, Shield, Trophy, Star, Zap, Target, Sparkles, Sword];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950/10 to-blue-950/20 relative overflow-hidden">
-      {/* Advanced animated background */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
+      {/* Subtle professional background */}
       <div className="fixed inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10 animate-pulse" />
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.15), transparent 50%)`
-          }}
-        />
-        {/* Animated orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float-delayed" />
-        <div className="absolute top-3/4 left-3/4 w-64 h-64 bg-pink-500/10 rounded-full blur-2xl animate-float-slow" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-slate-50/20 to-indigo-50/30" />
+        {/* Subtle mesh pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgb(51, 65, 85) 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }} />
       </div>
       {/* Sidebar toggle button - mobile only */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="fixed top-6 left-6 z-50 lg:hidden bg-white/10 backdrop-blur-xl border border-white/20 text-white p-3 rounded-2xl shadow-2xl hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
+        className="fixed top-6 left-6 z-50 lg:hidden bg-white border border-slate-200 text-slate-700 p-3 rounded-lg shadow-lg hover:bg-slate-50 hover:shadow-xl transition-all duration-200"
       >
         {isSidebarOpen ? (
-          <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
+          <X className="w-5 h-5" />
         ) : (
-          <Menu className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+          <Menu className="w-5 h-5" />
         )}
       </button>
 
-      {/* Sidebar */}
-      <aside 
-        className={`fixed top-0 left-0 h-full bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-2xl border-r border-white/20 shadow-2xl z-40 transition-all duration-500 ${
+      {/* Sidebar - Pixel-perfect professional design */}
+      <aside
+        className={`fixed top-0 left-0 h-full bg-white border-r border-slate-200/80 z-40 transition-all duration-300 ease-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         } ${
-          isSidebarHovered ? 'w-72' : 'w-20'
-        } lg:w-20 lg:hover:w-72`}
+          isSidebarHovered ? 'w-56' : 'w-20'
+        } lg:w-20 lg:hover:w-56`}
         onMouseEnter={() => setIsSidebarHovered(true)}
         onMouseLeave={() => setIsSidebarHovered(false)}
       >
-        <div className="p-4 h-full overflow-hidden flex flex-col">
-          {/* Sidebar Header - only show when expanded */}
-          <div className={`mb-6 transition-all duration-500 ${isSidebarHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 lg:opacity-0'}`}>
-            <h2 className="text-sm font-medium text-white/70 mb-2 tracking-wider uppercase">
+        <div className="h-full flex flex-col py-8">
+          {/* Sidebar Header */}
+          <div className={`px-6 mb-6 transition-all duration-300 overflow-hidden ${isSidebarHovered ? 'opacity-100 max-h-8' : 'opacity-0 max-h-0 lg:opacity-0 lg:max-h-0'}`}>
+            <h2 className="text-[10px] font-semibold text-slate-400 tracking-widest uppercase">
               Connect
             </h2>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full"></div>
           </div>
 
-          {/* Contact Links */}
-          <div 
-            className={`flex-1 flex flex-col justify-center items-center ${
-              sidebarConfig.useResponsive 
-                ? '' 
-                : 'gap-3 sm:gap-4 md:gap-5 py-4 sm:py-6 md:py-8'
-            }`}
-            style={sidebarConfig.useResponsive ? {
-              gap: sidebarConfig.buttonSpacing.responsive,
-              paddingTop: sidebarConfig.containerPadding.responsive,
-              paddingBottom: sidebarConfig.containerPadding.responsive
-            } : undefined}
-          >
-            <a 
+          {/* Contact Links - Properly centered and spaced */}
+          <nav className={`flex-1 flex flex-col justify-center px-4 gap-3 ${isSidebarHovered ? 'pt-0' : 'pt-8'}`}>
+            <a
               href={contentData.sections.contact.links.github.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative flex items-center bg-white/10 hover:bg-white/20 text-white font-medium rounded-2xl transition-all duration-500 border border-white/10 hover:border-white/30 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 h-14 overflow-hidden ${
-                isSidebarHovered ? 'py-3 px-5 justify-start mx-3 w-[calc(100%-1.5rem)]' : 'w-14 justify-center'
+              className={`group relative flex items-center gap-3 text-slate-700 font-medium rounded-xl transition-all duration-200 ${
+                isSidebarHovered
+                  ? 'px-4 py-3 hover:bg-slate-50 justify-start'
+                  : 'w-12 h-12 hover:bg-slate-50 justify-center mx-auto'
               }`}
               title="GitHub"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Github className={`w-5 h-5 group-hover:text-purple-300 transition-all duration-300 flex-shrink-0 z-10 ${isSidebarHovered ? '' : 'absolute'} group-hover:rotate-12`} />
-              <span className={`ml-3 transition-all duration-500 whitespace-nowrap text-sm font-medium overflow-hidden z-10 ${
-                isSidebarHovered ? 'opacity-100 translate-x-0 max-w-xs' : 'opacity-0 -translate-x-4 max-w-0 lg:opacity-0 lg:-translate-x-4'
+              <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+              </div>
+              <span className={`text-sm font-medium transition-all duration-300 ${
+                isSidebarHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 lg:opacity-0 absolute pointer-events-none'
               }`}>
-                {contentData.sections.contact.links.github.text}
+                GitHub
               </span>
             </a>
 
-            <a 
+            <a
               href={contentData.sections.contact.links.linkedin.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative flex items-center bg-white/10 hover:bg-white/20 text-white font-medium rounded-2xl transition-all duration-500 border border-white/10 hover:border-white/30 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 h-14 overflow-hidden ${
-                isSidebarHovered ? 'py-3 px-5 justify-start mx-3 w-[calc(100%-1.5rem)]' : 'w-14 justify-center'
+              className={`group relative flex items-center gap-3 text-slate-700 font-medium rounded-xl transition-all duration-200 ${
+                isSidebarHovered
+                  ? 'px-4 py-3 hover:bg-slate-50 justify-start'
+                  : 'w-12 h-12 hover:bg-slate-50 justify-center mx-auto'
               }`}
               title="LinkedIn"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Linkedin className={`w-5 h-5 group-hover:text-cyan-300 transition-all duration-300 flex-shrink-0 z-10 ${isSidebarHovered ? '' : 'absolute'} group-hover:rotate-12`} />
-              <span className={`ml-3 transition-all duration-500 whitespace-nowrap text-sm font-medium overflow-hidden z-10 ${
-                isSidebarHovered ? 'opacity-100 translate-x-0 max-w-xs' : 'opacity-0 -translate-x-4 max-w-0 lg:opacity-0 lg:-translate-x-4'
+              <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 fill-current text-[#0A66C2]" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </div>
+              <span className={`text-sm font-medium transition-all duration-300 ${
+                isSidebarHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 lg:opacity-0 absolute pointer-events-none'
               }`}>
-                {contentData.sections.contact.links.linkedin.text}
+                LinkedIn
               </span>
             </a>
 
-            <a 
+            <a
               href={contentData.sections.contact.links.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative flex items-center bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 text-white font-medium rounded-2xl transition-all duration-500 border border-white/10 hover:border-white/30 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20 h-14 overflow-hidden ${
-                isSidebarHovered ? 'py-3 px-5 justify-start mx-3 w-[calc(100%-1.5rem)]' : 'w-14 justify-center'
+              className={`group relative flex items-center gap-3 text-slate-700 font-medium rounded-xl transition-all duration-200 ${
+                isSidebarHovered
+                  ? 'px-4 py-3 hover:bg-slate-50 justify-start'
+                  : 'w-12 h-12 hover:bg-slate-50 justify-center mx-auto'
               }`}
               title="Instagram"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Instagram className={`w-5 h-5 group-hover:text-pink-300 transition-all duration-300 flex-shrink-0 z-10 ${isSidebarHovered ? '' : 'absolute'} group-hover:rotate-12`} />
-              <span className={`ml-3 transition-all duration-500 whitespace-nowrap text-sm font-medium overflow-hidden z-10 ${
-                isSidebarHovered ? 'opacity-100 translate-x-0 max-w-xs' : 'opacity-0 -translate-x-4 max-w-0 lg:opacity-0 lg:-translate-x-4'
+              <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5" viewBox="0 0 24 24">
+                  <defs>
+                    <radialGradient id="instagram-gradient" cx="30%" cy="110%">
+                      <stop offset="0%" stopColor="#fdf497" />
+                      <stop offset="5%" stopColor="#fdf497" />
+                      <stop offset="45%" stopColor="#fd5949" />
+                      <stop offset="60%" stopColor="#d6249f" />
+                      <stop offset="90%" stopColor="#285AEB" />
+                    </radialGradient>
+                  </defs>
+                  <path fill="url(#instagram-gradient)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </div>
+              <span className={`text-sm font-medium transition-all duration-300 ${
+                isSidebarHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 lg:opacity-0 absolute pointer-events-none'
               }`}>
-                {contentData.sections.contact.links.instagram.text}
+                Instagram
               </span>
             </a>
-
-            <a 
-              href={contentData.sections.contact.links.clashOfClans.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group relative flex items-center bg-gradient-to-r from-orange-600/20 to-red-600/20 hover:from-orange-600/30 hover:to-red-600/30 text-white font-medium rounded-2xl transition-all duration-500 border border-white/10 hover:border-white/30 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 h-14 overflow-hidden ${
-                isSidebarHovered ? 'py-3 px-5 justify-start mx-3 w-[calc(100%-1.5rem)]' : 'w-14 justify-center'
-              }`}
-              title="Clash of Clans"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Image
-                src="/clash_clans.svg"
-                alt="Clash of Clans"
-                width={20}
-                height={20}
-                className={`w-5 h-5 transition-all duration-300 flex-shrink-0 z-10 ${isSidebarHovered ? '' : 'absolute'} group-hover:brightness-125 group-hover:rotate-12`}
-              />
-              <span className={`ml-3 transition-all duration-500 whitespace-nowrap text-sm font-medium overflow-hidden z-10 ${
-                isSidebarHovered ? 'opacity-100 translate-x-0 max-w-xs' : 'opacity-0 -translate-x-4 max-w-0 lg:opacity-0 lg:-translate-x-4'
-              }`}>
-                {contentData.sections.contact.links.clashOfClans.text}
-              </span>
-            </a>
-          </div>
+          </nav>
         </div>
       </aside>
 
@@ -229,298 +212,187 @@ export default function Home() {
       )}
 
       {/* Main content area - adjusted for sidebar */}
-      <div className={`transition-all duration-500 ${isSidebarHovered ? 'lg:ml-72' : 'lg:ml-20'}`}>
-        {/* Dynamic floating icons with parallax */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          {[...Array(20)].map((_, i) => {
-            const IconComponent = floatingIcons[Math.floor(Math.random() * floatingIcons.length)];
-            return (
-              <div
-                key={i}
-                className="absolute text-white/20 transition-transform duration-700"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  transform: `translate(${Math.sin(scrollY * 0.001 + i) * 20}px, ${Math.cos(scrollY * 0.001 + i) * 20}px)`,
-                  animation: `float-${i % 3} ${20 + Math.random() * 10}s ease-in-out infinite`,
-                  animationDelay: `${Math.random() * 5}s`
-                }}
-              >
-                <IconComponent className="w-6 h-6 drop-shadow-lg" />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Modern animated grid pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="w-full h-full" style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px',
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
-          }} />
-        </div>
-
-        {/* Header with entrance animation */}
-        <header className="text-center py-20 relative z-10">
-          <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-4 tracking-tight animate-gradient">
+      <div className={`transition-all duration-300 ${isSidebarHovered ? 'lg:ml-56' : 'lg:ml-20'}`}>
+        {/* Header - Balanced and clean */}
+        <header className="text-center px-8 py-16 md:py-20 relative z-10">
+          <div className={`max-w-4xl mx-auto transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3 tracking-tight">
               {contentData.header.name}
             </h1>
-            <p className="text-white/80 text-xl md:text-2xl font-light tracking-wide">
+            <p className="text-slate-600 text-base font-normal max-w-xl mx-auto">
               {contentData.header.subtitle}
             </p>
-            <div className="flex items-center justify-center gap-2 mt-6">
-              <div className="w-20 h-0.5 bg-gradient-to-r from-transparent to-blue-400 rounded-full" />
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
-              <div className="w-20 h-0.5 bg-gradient-to-l from-transparent to-pink-400 rounded-full" />
-            </div>
           </div>
         </header>
 
         {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-6 py-8 relative z-10">
-          {/* Two Column Layout with stagger animation */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-            {/* Experience Section - Left Column */}
-            <section className={`relative transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-              {/* Glassmorphism card */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl backdrop-blur-xl" />
-              <div className="relative z-10 p-8">
-                <div className="mb-8">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Briefcase className="w-6 h-6 text-blue-400" />
-                    <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                      {contentData.sections.experience.title}
-                    </h2>
+        <main className="max-w-6xl mx-auto px-6 md:px-8 pb-16 relative z-10 space-y-12">
+
+          {/* Projects Section - Clean & Compact */}
+          <section className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
+                Projects
+              </h2>
+              <div className="w-12 h-1 bg-blue-600 rounded-full" />
+            </div>
+
+            <div className="space-y-4">
+              {contentData.sections.projects.items.map((project) => (
+                <div key={project.id} className="group bg-white rounded-xl shadow-sm border border-slate-200/60 p-6 hover:shadow-md hover:border-slate-300/60 transition-all duration-300">
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <h3 className="text-lg font-bold text-slate-900">
+                      {project.name}
+                    </h3>
+                    <div className="flex gap-3 flex-shrink-0">
+                      {project.links.demo && (
+                        <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors whitespace-nowrap">
+                          Live Demo →
+                        </a>
+                      )}
+                      {project.links.github && project.links.github !== "#" && (
+                        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-slate-600 hover:text-slate-700 transition-colors whitespace-nowrap">
+                          GitHub →
+                        </a>
+                      )}
+                      {project.links.amazon && project.links.amazon !== "#" && (
+                        <a href={project.links.amazon} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-slate-600 hover:text-slate-700 transition-colors whitespace-nowrap">
+                          Amazon →
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="w-16 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full" />
+
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="px-2 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                
-                <div className="space-y-4">
-                  {contentData.sections.experience.jobs.map((job, index) => (
-                    <div 
-                      key={job.id} 
-                      className="group relative"
-                      onMouseEnter={() => setHoveredJob(job.id)}
-                      onMouseLeave={() => setHoveredJob(null)}
-                      style={{
-                        animationDelay: `${index * 100}ms`
-                      }}
-                    >
-                      {/* Modern accent line with glow */}
-                      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 rounded-full transition-all duration-500 group-hover:w-1 group-hover:shadow-lg group-hover:shadow-purple-500/50" />
-                      
-                      <div className="flex items-start gap-4 p-4 pl-6 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all duration-500 group relative overflow-hidden border border-white/10 hover:border-white/20 hover:shadow-2xl hover:scale-[1.02] hover:translate-x-2">
-                        {/* Dynamic background gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                        
-                        {/* Company Logo with animation */}
-                        <div className="relative flex-shrink-0 z-10">
-                          <div className="w-12 h-12 bg-white/90 rounded-xl flex items-center justify-center p-1.5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl group-hover:shadow-2xl">
+              ))}
+            </div>
+          </section>
+
+          {/* Experience & Skills - Two Columns */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Experience Section */}
+            <section className={`transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200/60 p-6 h-full hover:shadow-md hover:border-slate-300/60 transition-all duration-300">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
+                    Experience
+                  </h2>
+                  <div className="w-12 h-1 bg-blue-600 rounded-full" />
+                </div>
+
+                <div className="space-y-6">
+                  {contentData.sections.experience.jobs.map((job) => (
+                    <div key={job.id} className="space-y-2">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0">
+                          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5 shadow-sm border border-slate-200/50">
                             <Image
                               src={`/${job.logo}.png`}
                               alt={`${job.company} logo`}
-                              width={32}
-                              height={32}
+                              width={28}
+                              height={28}
                               className="w-full h-full object-contain"
                             />
                           </div>
                         </div>
 
-                        {/* Job Content with better typography */}
-                        <div className="flex-1 min-w-0 relative z-10">
-                          <div className="flex flex-col gap-1 mb-2">
-                            <h3 className="text-base font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500">
-                              {job.title}
-                            </h3>
-                            <div className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/80 transition-colors duration-300">
-                              <Calendar className="w-3 h-3" />
-                              <span>{job.duration} · {job.length}</span>
-                            </div>
-                          </div>
-                          
-                          <p className="text-white/70 group-hover:text-white/90 transition-colors duration-300 text-sm font-medium">
-                            {job.company} · {job.type}
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-base font-semibold text-slate-900 leading-tight">
+                            {job.title}
+                          </h3>
+                          <p className="text-sm text-slate-600 font-medium">
+                            {job.company}
                           </p>
-                          
-                          {job.description && (
-                            <p className="text-white/60 group-hover:text-white/80 text-sm leading-relaxed mt-2 transition-all duration-300">
-                              {job.description}
-                            </p>
-                          )}
+                          <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
+                            <span>{job.type}</span>
+                            <span>•</span>
+                            <span>{job.duration}</span>
+                          </div>
                         </div>
-                        
-                        {/* Hover indicator */}
-                        <ChevronRight className={`w-4 h-4 text-white/40 transition-all duration-300 ${hoveredJob === job.id ? 'translate-x-1 text-white/60' : ''}`} />
                       </div>
+
+                      {job.bullets && (
+                        <ul className="ml-13 space-y-1.5 text-sm text-slate-600 leading-relaxed list-disc list-outside">
+                          {job.bullets.map((bullet, i) => (
+                            <li key={i}>{bullet}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
             </section>
 
-            {/* Right Content Area */}
-            <section className={`relative transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              {/* Glassmorphism card with gradient border */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl backdrop-blur-xl" />
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-orange-500/10 rounded-3xl" />
-              
-              {/* Decorative floating cat with parallax */}
-              <div 
-                className="absolute -top-12 right-8 z-20 transition-transform duration-700"
-                style={{
-                  transform: `translateY(${scrollY * 0.05}px)`
-                }}
-              >
-                <div className="w-40 h-40 rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <img 
-                    src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=200&h=200&fit=crop&crop=face" 
-                    alt="Cute cat" 
-                    className="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
-                  />
-                  <div className="absolute bottom-2 left-2 right-2 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-center">
-                    Meow! 🐱
-                  </div>
+            {/* Skills Section */}
+            <section className={`transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200/60 p-6 h-full hover:shadow-md hover:border-slate-300/60 transition-all duration-300">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
+                    Skills
+                  </h2>
+                  <div className="w-12 h-1 bg-blue-600 rounded-full" />
                 </div>
-              </div>
-              
-              <div className="relative z-10 p-8">
 
-                {/* About Section with modern styling */}
-                <div className="mt-16">
-                  <div className="mb-8">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Heart className="w-6 h-6 text-pink-400 animate-pulse" />
-                      <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                        {contentData.sections.about.title}
-                      </h2>
-                    </div>
-                    <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 via-yellow-400 to-orange-400 rounded-full" />
-                  </div>
-                  
-                  <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-purple-500 to-orange-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000" />
-                    <div className="relative p-8 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-500 hover:shadow-2xl">
-                      <div className="absolute top-0 right-0 p-4 opacity-10">
-                        <Code2 className="w-24 h-24 text-white" />
-                      </div>
-                      <p className="text-white/90 leading-relaxed text-base md:text-lg whitespace-pre-line font-light tracking-wide relative z-10">
-                        {contentData.sections.about.description}
-                      </p>
-                      
-                      {/* Decorative elements */}
-                      <div className="flex gap-4 mt-6">
-                        <div className="flex items-center gap-2 text-white/60 text-sm">
-                          <Terminal className="w-4 h-4" />
-                          <span>Developer</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-white/60 text-sm">
-                          <GraduationCap className="w-4 h-4" />
-                          <span>Student</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-white/60 text-sm">
-                          <Activity className="w-4 h-4" />
-                          <span>Creator</span>
-                        </div>
+                <div className="space-y-5">
+                  {contentData.sections.skills.categories.map((category) => (
+                    <div key={category.name}>
+                      <h3 className="text-sm font-semibold text-slate-900 mb-3">
+                        {category.name}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {category.items.map((item) => (
+                          <span key={item} className="px-3 py-1.5 bg-slate-50 border border-slate-200/50 rounded-lg text-slate-700 text-xs font-medium hover:bg-slate-100 hover:border-slate-300/50 transition-colors">
+                            {item}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </section>
           </div>
 
-          {/* Clash of Clans Section - Epic gaming showcase */}
-          <section className={`mb-24 relative transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20 hover:border-white/30 transition-all duration-700">
-              {/* Animated gradient border */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 via-yellow-500 to-red-500 animate-gradient-x" />
-              
-              {/* Gaming-inspired background pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-64 h-64 bg-orange-500 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-0 right-0 w-64 h-64 bg-red-500 rounded-full blur-3xl animate-pulse delay-1000" />
+          {/* About Me - Full Width */}
+          <section className={`transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200/60 p-6 hover:shadow-md hover:border-slate-300/60 transition-all duration-300">
+              <div className="mb-4">
+                <h2 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
+                  About Me
+                </h2>
+                <div className="w-12 h-1 bg-blue-600 rounded-full" />
               </div>
-              
-              {/* Content */}
-              <div className="relative z-10 p-12">
-                <div className="text-center mb-12">
-                  <div className="flex items-center justify-center gap-4 mb-6">
-                    <Sword className="w-8 h-8 text-orange-400 animate-bounce" />
-                    <h2 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-400 to-red-400 tracking-tight animate-gradient">
-                      {contentData.sections.clashOfClans.title}
-                    </h2>
-                    <Shield className="w-8 h-8 text-red-400 animate-bounce delay-100" />
-                  </div>
-                  <p className="text-white/60 text-lg">Town Hall 15 · Legend League</p>
-                </div>
 
-                {/* Base Image with epic zoom effect */}
-                <div className="relative max-w-6xl mx-auto group">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-orange-500 via-yellow-500 to-red-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
-                  <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-3xl p-10 overflow-hidden border border-white/20 hover:border-white/30 transition-all duration-500 backdrop-blur-sm">
-                    {/* Interactive zoom area */}
-                    <div 
-                      className="relative cursor-crosshair overflow-hidden rounded-2xl"
-                      onMouseMove={handleImageMouseMove}
-                      onMouseEnter={() => setIsImageHovered(true)}
-                      onMouseLeave={() => setIsImageHovered(false)}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-                      <div 
-                        className="relative transition-all duration-300"
-                        style={{
-                          transform: isImageHovered 
-                            ? `scale(2) translate(${(50 - imageHoverPosition.x) * 0.5}%, ${(50 - imageHoverPosition.y) * 0.5}%)` 
-                            : 'scale(1) translate(0%, 0%)',
-                          transformOrigin: 'center center'
-                        }}
-                      >
-                        <Image
-                          src={contentData.sections.clashOfClans.image.src}
-                          alt={contentData.sections.clashOfClans.image.alt}
-                          width={1000}
-                          height={750}
-                          className="w-full h-auto rounded-2xl shadow-2xl"
-                          priority
-                        />
-                      </div>
-                    </div>
-                    
-                    {/* Interactive hover hints */}
-                    <div className={`absolute bottom-8 left-8 right-8 flex justify-between items-center transition-all duration-500 ${isImageHovered ? 'opacity-0 translate-y-2' : 'opacity-100'}`}>
-                      <div className="bg-white/10 backdrop-blur-md text-white text-sm px-5 py-3 rounded-full border border-white/20 font-medium flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-yellow-400" />
-                        {contentData.sections.clashOfClans.image.hoverText}
-                      </div>
-                      <div className="flex gap-2">
-                        <Trophy className="w-6 h-6 text-yellow-400 animate-pulse" />
-                        <Crown className="w-6 h-6 text-orange-400 animate-pulse delay-100" />
-                        <Star className="w-6 h-6 text-red-400 animate-pulse delay-200" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p className="text-slate-700 leading-relaxed text-sm whitespace-pre-line max-w-4xl">
+                {contentData.sections.about.description}
+              </p>
             </div>
           </section>
+
         </main>
 
-        {/* Footer with style */}
-        <footer className="text-center py-16 mt-24 relative z-10">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="w-20 h-px bg-gradient-to-r from-transparent to-white/20" />
-            <Layers className="w-5 h-5 text-white/40" />
-            <div className="w-20 h-px bg-gradient-to-l from-transparent to-white/20" />
+        {/* Footer - Refined and minimal */}
+        <footer className="text-center py-12 mt-12 relative z-10">
+          <div className="max-w-6xl mx-auto px-8">
+            <div className="border-t border-slate-200/60 pt-6">
+              <p className="text-slate-500 text-sm">
+                {contentData.footer.copyright}
+              </p>
+            </div>
           </div>
-          <p className="text-white/50 font-light tracking-wider text-lg">
-            {contentData.footer.copyright}
-          </p>
         </footer>
       </div>
 

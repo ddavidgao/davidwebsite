@@ -71,11 +71,11 @@
         },
         {
           "name": "Frameworks",
-          "items": ["React", "Next.js", "PyTorch", "TensorFlow", "Express.js"]
+          "items": ["React", "Next.js", "PyTorch", "TensorFlow", "Express.js", "LangGraph"]
         },
         {
           "name": "Tools",
-          "items": ["AWS (EC2, RDS)", "Vercel", "Docker", "Git", "Stripe API"]
+          "items": ["AWS (EC2, RDS, Lambda, DynamoDB)", "MongoDB", "Vercel", "Docker", "Git", "Stripe API"]
         }
       ]
     },

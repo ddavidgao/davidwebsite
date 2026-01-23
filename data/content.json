@@ -1,7 +1,8 @@
 {
   "header": {
     "name": "David Gao",
-    "subtitle": "CS Student @ Purdue University"
+    "role": "Software Engineer",
+    "location": "Purdue University"
   },
   "sections": {
     "projects": {
@@ -10,24 +11,26 @@
         {
           "id": "cardboardai",
           "name": "CardboardAI",
-          "description": "AI-native self-storage management platform serving multiple facilities. Built custom LangGraph-inspired AI agent to automate tenant onboarding, invoice generation, and payment collection. Dual-portal architecture with operator dashboard and tenant self-service portal.",
+          "tagline": "AI-native storage management",
+          "description": "Multi-tenant platform automating storage facility operations. Custom LangGraph agent handles tenant onboarding, invoicing, and payment collection. Dual-portal architecture serving operators and tenants.",
           "tech": ["Next.js", "TypeScript", "AWS RDS", "Prisma", "LangGraph"],
           "links": {
             "demo": "https://cardboardai.dev",
             "github": "#"
           },
-          "image": "/cardboardai-preview.png"
+          "metrics": "Live in production"
         },
         {
           "id": "iot-locker",
-          "name": "IoT Locker Management System",
-          "description": "Commercial IoT locker system deployed to 40+ active units generating $100,000+ in revenue. Manages PIN-based access control and Stripe payments via QR code. Available on Amazon.",
+          "name": "IoT Locker System",
+          "tagline": "Commercial hardware + software",
+          "description": "PIN-based access control with Stripe payments via QR. Deployed to 40+ units. Full-stack from Raspberry Pi firmware to admin dashboard.",
           "tech": ["Electron", "Express.js", "PostgreSQL", "Raspberry Pi", "AWS EC2"],
           "links": {
             "amazon": "#",
             "github": "#"
           },
-          "image": "/iot-locker-preview.png"
+          "metrics": "$100k+ revenue"
         }
       ]
     },
@@ -38,53 +41,37 @@
           "id": "quture-fashion",
           "title": "Software Engineer Intern",
           "company": "Quture Fashion",
-          "type": "Internship",
-          "duration": "Mar 2025 - Aug 2025",
-          "length": "6 mos",
-          "bullets": [
-            "Developed AI-powered virtual try-on features using computer vision and ML algorithms",
-            "Responded to security incident with compromised Stripe credentials; implemented emergency patches and strengthened authentication"
-          ],
+          "period": "Mar 2025 — Aug 2025",
+          "description": "AI-powered virtual try-on features. Led incident response for compromised credentials, implemented security patches.",
           "logo": "quture-logo"
         },
         {
           "id": "research-intern",
           "title": "Research Intern",
           "company": "Washington University in St. Louis",
-          "type": "Internship",
-          "duration": "Jun 2024 - Aug 2024",
-          "length": "3 mos",
-          "bullets": [
-            "Built evaluation pipeline for self-supervised medical image reconstruction using PyTorch and NumPy",
-            "Conducted experiments on diffusion models for MRI reconstruction; contributed to IEEE ISBI 2025 research paper"
-          ],
+          "period": "Jun 2024 — Aug 2024",
+          "description": "Built evaluation pipeline for self-supervised medical image reconstruction. Contributed to IEEE ISBI 2025 paper on diffusion models for MRI.",
           "logo": "washu-logo"
         }
       ]
     },
     "skills": {
-      "title": "Skills",
       "categories": [
         {
           "name": "Languages",
-          "items": ["Python", "Java", "JavaScript", "TypeScript", "SQL"]
+          "items": ["Python", "TypeScript", "Java", "SQL"]
         },
         {
           "name": "Frameworks",
-          "items": ["React", "Next.js", "PyTorch", "TensorFlow", "Express.js", "LangGraph"]
+          "items": ["React", "Next.js", "PyTorch", "Express.js", "LangGraph"]
         },
         {
-          "name": "Tools",
-          "items": ["AWS (EC2, RDS, Lambda, DynamoDB)", "MongoDB", "Vercel", "Docker", "Git", "Stripe API"]
+          "name": "Infrastructure",
+          "items": ["AWS", "Docker", "PostgreSQL", "MongoDB", "Vercel"]
         }
       ]
     },
-    "about": {
-      "title": "About Me",
-      "description": "CS student at Purdue building production software. Created CardboardAI, an AI-native storage management platform, and engineered a commercial IoT locker system generating $100k+ revenue. Previously researched ML-based medical imaging at WashU (IEEE ISBI 2025). I build things that ship.\n\nAlso learning piano—reach out if you want to talk code or Chopin."
-    },
     "contact": {
-      "title": "Let's Connect",
       "links": {
         "github": {
           "text": "GitHub",
@@ -92,20 +79,16 @@
         },
         "linkedin": {
           "text": "LinkedIn",
-          "url": "https://www.linkedin.com/in/david-gao-322837355/#"
+          "url": "https://www.linkedin.com/in/david-gao-322837355/"
         },
         "instagram": {
           "text": "Instagram",
           "url": "https://www.instagram.com/dvaidgao/"
-        },
-        "clashOfClans": {
-          "text": "Clash of Clans",
-          "url": "https://link.clashroyale.com/en/?p=71-5e5d3a3b-014c-4bab-b657-3d68f12f2b1b&supercell_id"
         }
       }
     }
   },
   "footer": {
-    "copyright": "© 2025 David Gao"
+    "copyright": "© 2025"
   }
-} 
+}

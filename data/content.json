@@ -9,6 +9,17 @@
       "title": "Projects",
       "items": [
         {
+          "id": "slinkt",
+          "name": "Slinkt",
+          "tagline": "Large file transfer without the paywall",
+          "description": "WeTransfer alternative for creators and freelancers. 5GB free transfers, $5/month Pro tier. Built with T3 stack, S3 presigned URLs for direct uploads, Stripe billing.",
+          "tech": ["Next.js", "TypeScript", "tRPC", "AWS S3", "Stripe", "Prisma"],
+          "links": {
+            "demo": "https://slinkt.app"
+          },
+          "metrics": "In development"
+        },
+        {
           "id": "cardboardai",
           "name": "CardboardAI",
           "tagline": "AI-native storage management",

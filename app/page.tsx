@@ -43,9 +43,9 @@ export default function Home() {
                   <div key={project.id}>
                     <div className="flex items-baseline justify-between gap-4 mb-1">
                       <h3 className="text-lg font-medium">
-                        {project.links.demo ? (
+                        {project.links.demo || project.links.github ? (
                           <a
-                            href={project.links.demo}
+                            href={project.links.demo || project.links.github}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-neutral-600 transition-colors"

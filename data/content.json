@@ -12,12 +12,12 @@
           "id": "slinkt",
           "name": "Slinkt",
           "tagline": "Large file transfer without the paywall",
-          "description": "WeTransfer alternative for creators and freelancers. 5GB free transfers, $5/month Pro tier. Built with T3 stack, S3 presigned URLs for direct uploads, Stripe billing.",
-          "tech": ["Next.js", "TypeScript", "tRPC", "AWS S3", "Stripe", "Prisma"],
+          "description": "File transfer SaaS supporting files up to 100GB via chunked multipart uploads to Cloudflare R2. Freemium model with Stripe billing, usage tracking, and tiered limits. Password-protected downloads, custom slugs, and IP-based rate limiting.",
+          "tech": ["Next.js", "TypeScript", "tRPC", "Cloudflare R2", "Stripe", "Prisma"],
           "links": {
             "demo": "https://slinkt.app"
           },
-          "metrics": "In development"
+          "metrics": "Live"
         },
         {
           "id": "cardboardai",
@@ -35,13 +35,23 @@
           "id": "iot-locker",
           "name": "IoT Locker System",
           "tagline": "Commercial hardware + software",
-          "description": "PIN-based access control with Stripe payments via QR. Deployed to 40+ units. Full-stack from Raspberry Pi firmware to admin dashboard.",
-          "tech": ["Electron", "Express.js", "PostgreSQL", "Raspberry Pi", "AWS EC2"],
+          "description": "Event-driven IoT locker system using Supabase Realtime and Edge Functions. Migrated to Flask + Chromium kiosk, reducing memory 60% and boot time from 15s to 5s. Payment webhooks, GPIO relay control, and pg_cron for rental expiration.",
+          "tech": ["Flask", "Supabase", "Raspberry Pi", "Chromium Kiosk"],
           "links": {
-            "amazon": "#",
-            "github": "#"
+            "amazon": "https://www.amazon.com/dp/B0DY13ZQ53"
           },
           "metrics": "$100k+ revenue"
+        },
+        {
+          "id": "rlm",
+          "name": "RLM",
+          "tagline": "Grounded AI through code execution",
+          "description": "Agentic RAG system that forces LLMs to search documents via Python REPL instead of hallucinating. Multi-model orchestration with sandboxed code execution and evidence-based answer grading.",
+          "tech": ["Python", "Ollama", "DeepSeek", "Qwen", "Matplotlib"],
+          "links": {
+            "github": "https://github.com/ddavidgao/RLM_TEST"
+          },
+          "metrics": "Research"
         }
       ]
     },
@@ -70,15 +80,15 @@
       "categories": [
         {
           "name": "Languages",
-          "items": ["Python", "TypeScript", "Java", "SQL"]
+          "items": ["Python", "Java", "JavaScript", "TypeScript", "SQL", "PHP"]
         },
         {
           "name": "Frameworks",
-          "items": ["React", "Next.js", "PyTorch", "Express.js", "LangGraph"]
+          "items": ["React.js", "Next.js", "Express.js", "Flask", "PyTorch", "tRPC"]
         },
         {
           "name": "Infrastructure",
-          "items": ["AWS", "Docker", "PostgreSQL", "MongoDB", "Vercel"]
+          "items": ["AWS", "Supabase", "Cloudflare R2", "Docker", "PostgreSQL", "Vercel"]
         }
       ]
     },

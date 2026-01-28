@@ -80,15 +80,19 @@
       "categories": [
         {
           "name": "Languages",
-          "items": ["Python", "Java", "JavaScript", "TypeScript", "SQL", "PHP"]
+          "items": ["Python", "Java", "JavaScript", "TypeScript", "SQL", "HTML/CSS", "PHP"]
         },
         {
           "name": "Frameworks",
-          "items": ["React.js", "Next.js", "Express.js", "Flask", "PyTorch", "tRPC"]
+          "items": ["React.js", "Next.js", "Node.js", "Express.js", "Flask", "TensorFlow", "PyTorch", "Electron", "tRPC"]
         },
         {
-          "name": "Infrastructure",
-          "items": ["AWS", "Supabase", "Cloudflare R2", "Docker", "PostgreSQL", "Vercel"]
+          "name": "Developer Tools",
+          "items": ["Git", "Modal", "Docker", "AWS (EC2, S3, RDS)", "Supabase", "Cloudflare R2", "Vercel", "Stripe API"]
+        },
+        {
+          "name": "Technologies",
+          "items": ["Computer Vision", "Machine Learning", "PostgreSQL", "Prisma", "NextAuth", "Cron Jobs", "Raspberry Pi", "IoT Systems"]
         }
       ]
     },
